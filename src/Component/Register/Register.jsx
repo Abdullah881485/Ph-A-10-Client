@@ -2,28 +2,56 @@ import React from "react";
 import { Link } from "react-router";
 
 const Register = () => {
+  const handleCreateUser = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photo = e.target.photo.value;
+    const password = e.target.password.value;
+    console.log({ name, email, photo, password });
+  };
   return (
     <div className="w-4/10 mx-auto ">
       <div className="p-6  rounded-2xl shadow bg-[#0b1422] my-30">
         <h1 className="text-2xl font-bold mb-10 text-center">
           Create An Account
         </h1>
-        <form>
+        <form onSubmit={handleCreateUser}>
           <div className="flex flex-col gap-2 mb-4">
             <label htmlFor="user"> Full Name</label>
-            <input type="text" className="input w-full bg-transparent" />
+            <input
+              required
+              name="name"
+              type="text"
+              className="input w-full bg-transparent"
+            />
           </div>
           <div className="flex flex-col gap-2 mb-4">
             <label htmlFor="user"> Email</label>
-            <input type="email" className="input w-full bg-transparent" />
+            <input
+              required
+              name="email"
+              type="email"
+              className="input w-full bg-transparent"
+            />
           </div>
           <div className="flex flex-col gap-2 mb-4">
             <label htmlFor="user"> Photo URL</label>
-            <input type="text" className="input w-full bg-transparent" />
+            <input
+              required
+              name="photo"
+              type="text"
+              className="input w-full bg-transparent"
+            />
           </div>
           <div className="flex flex-col gap-2 mb-4">
             <label htmlFor="user">Password (Use a strong password)</label>
-            <input type="password" className="input w-full bg-transparent" />
+            <input
+              required
+              name="password"
+              type="password"
+              className="input w-full bg-transparent"
+            />
           </div>
 
           <button
