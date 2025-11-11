@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInUser, signInWithGoogle, setUser } = use(AuthContext);
@@ -14,18 +15,34 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(result.user);
+        Swal.fire({
+          title: "",
+          text: "You logged in Successfully",
+          icon: "success",
+          confirmButtonText: "Close",
+        });
         setUser(user);
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         console.log(error);
-        alert("Account not found");
+        Swal.fire({
+          title: "Warning",
+          text: "Account Not Found, Please Register",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
       });
   };
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        alert("sign in with google");
+        Swal.fire({
+          title: "",
+          text: "You logged in Successfully",
+          icon: "success",
+          confirmButtonText: "Close",
+        });
         navigate(`${location.state ? location.state : "/"}`);
         console.log(result);
       })

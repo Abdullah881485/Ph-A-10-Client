@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -30,7 +31,12 @@ const Header = () => {
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
-        alert("logged out successfully");
+        Swal.fire({
+          title: "",
+          text: "You logged out Successfully",
+          icon: "success",
+          confirmButtonText: "Close",
+        });
         navigate("/login");
       })
       .catch((err) => {

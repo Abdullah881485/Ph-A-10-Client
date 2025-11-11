@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, signInWithGoogle, setLoading, setUser, updateUser } =
@@ -12,11 +13,38 @@ const Register = () => {
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
+    if (password.length < 6) {
+      Swal.fire({
+        title: "Error!",
+        text: "Password need to be atleast 6 digit or longer",
+        icon: "error",
+        confirmButtonText: "Close",
+      });
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      Swal.fire({
+        title: "Error!",
+        text: "Must have an Uppercase letter in the password",
+        icon: "error",
+        confirmButtonText: "Close",
+      });
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      Swal.fire({
+        title: "Error!",
+        text: "Must have an lowercase letter in the password",
+        icon: "error",
+        confirmButtonText: "Close",
+      });
+      return;
+    } else {
+      ("");
+    }
     setLoading(true);
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        alert("user created");
+
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
@@ -26,12 +54,23 @@ const Register = () => {
             console.log(err);
             setUser(user);
           });
+        Swal.fire({
+          title: "",
+          text: "Account Created Successfully",
+          icon: "success",
+          confirmButtonText: "Close",
+        });
 
         console.log(result.user);
       })
       .catch((err) => {
         console.log(err);
-        alert("already have an account");
+        Swal.fire({
+          title: "Error!",
+          text: "You Already Have an Account",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
       })
       .finally(() => setLoading(false));
 
@@ -41,7 +80,12 @@ const Register = () => {
     setLoading(true);
     signInWithGoogle()
       .then((result) => {
-        alert("account created with google");
+        Swal.fire({
+          title: "",
+          text: "Account Created Successfully",
+          icon: "success",
+          confirmButtonText: "Close",
+        });
         const user = result.user;
         console.log(result);
         setUser(user);
