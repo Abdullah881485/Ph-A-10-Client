@@ -1,10 +1,11 @@
 import React, { use } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 
 const Header = () => {
   const { user, signOutUser } = use(AuthContext);
   console.log(user);
+  const navigate = useNavigate();
 
   const links = (
     <>
@@ -30,6 +31,7 @@ const Header = () => {
     signOutUser()
       .then(() => {
         alert("logged out successfully");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -124,6 +126,7 @@ const Header = () => {
                 </g>
               </svg>
             </label>
+
             {user ? (
               <div className="flex items-center gap-5">
                 <div className="dropdown dropdown-center">
@@ -133,18 +136,17 @@ const Header = () => {
                     className="m-1 cursor-pointer"
                   >
                     <img
-                      className="w-10 rounded-full"
-                      src={`${
-                        user.photoURL
-                          ? user.photoURL
-                          : "https://i.ibb.co.com/HT6sMcVr/2015-10-06-FB-person.webp"
-                      }`}
-                      alt=""
+                      className=" w-10 rounded-full"
+                      src={
+                        user?.photoURL ||
+                        "https://i.ibb.co/HT6sMcVr/2015-10-06-FB-person.webp"
+                      }
+                      alt=" not found"
                     />
                   </div>
                   <div
                     tabIndex={0}
-                    className="dropdown-content card card-sm bg-[#0b1422] z-1 shadow-md m-3 p-2"
+                    className="dropdown-content card card-sm bg-[#0b1422] z-1 shadow-md m-3 p-2 w-60"
                   >
                     <div className="card-body   ">
                       <h1 className="text-[15px] font-bold">

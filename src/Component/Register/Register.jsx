@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 
 const Register = () => {
-  const { createUser, signInWithGoogle, setLoading } = use(AuthContext);
+  const { createUser, signInWithGoogle, setLoading, setUser, updateUser } =
+    use(AuthContext);
   const navigate = useNavigate();
   const handleCreateUser = (e) => {
     e.preventDefault();
@@ -14,9 +15,19 @@ const Register = () => {
     setLoading(true);
     createUser(email, password)
       .then((result) => {
+        const user = result.user;
         alert("user created");
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+            setUser(user);
+          });
+
         console.log(result.user);
-        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +42,9 @@ const Register = () => {
     signInWithGoogle()
       .then((result) => {
         alert("account created with google");
+        const user = result.user;
         console.log(result);
+        setUser(user);
         navigate("/");
       })
       .catch((error) => {

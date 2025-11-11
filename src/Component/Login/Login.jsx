@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 
 const Login = () => {
-  const { signInUser, signInWithGoogle } = use(AuthContext);
+  const { signInUser, signInWithGoogle, setUser } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const handleSignIn = (e) => {
@@ -12,7 +12,9 @@ const Login = () => {
     const password = e.target.password.value;
     signInUser(email, password)
       .then((result) => {
+        const user = result.user;
         console.log(result.user);
+        setUser(user);
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
@@ -41,6 +43,7 @@ const Login = () => {
           <div className="flex flex-col gap-2 mb-4">
             <label htmlFor="user"> Email</label>
             <input
+              required
               name="email"
               type="email"
               className="input w-full bg-transparent"
@@ -49,6 +52,7 @@ const Login = () => {
           <div className="flex flex-col gap-2 mb-4">
             <label htmlFor="user">Password </label>
             <input
+              required
               name="password"
               type="password"
               className="input w-full bg-transparent"
