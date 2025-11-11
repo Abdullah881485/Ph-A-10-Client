@@ -34,7 +34,6 @@ const Router = createBrowserRouter([
       },
       {
         path: "/myTransaction",
-        loader: () => fetch("http://localhost:5000/myTransaction"),
         element: (
           <PrivateRoute>
             <MyTransaction></MyTransaction>
@@ -43,7 +42,8 @@ const Router = createBrowserRouter([
       },
       {
         path: "/transactionDetails/:id",
-        loader: ({params}) => fetch(`http://localhost:5000/transactionDetails/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/transactionDetails/${params.id}`),
         element: (
           <PrivateRoute>
             <TransactionDetails></TransactionDetails>

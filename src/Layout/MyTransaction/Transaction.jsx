@@ -1,8 +1,10 @@
+import axios from "axios";
 import { format } from "date-fns";
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
-const Transaction = ({ card }) => {
+const Transaction = ({ card, setMyTransaction, myTransaction }) => {
   const navigate = useNavigate();
   const [type, setType] = useState("");
   const income = ["Salary", "Business", "Investment", "Other"];
@@ -21,9 +23,63 @@ const Transaction = ({ card }) => {
     setType(e.target.value);
   };
   const updateModalRef = useRef(null);
-  const handleUpdateTransaction = () => {
+  const handleUpdateTransaction = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const type = form.type.value;
+    const category = form.category.value;
+    const amount = form.amount.value;
+    const description = form.description.value;
+    const date = form.date.value;
+    console.log(type, category, amount, description, date);
+    const updateTransaction = {
+      type,
+      category,
+      amount,
+      description,
+      date,
+    };
+    axios
+      .patch(
+        `http://localhost:5000/updateTransaction/${card._id}`,
+        updateTransaction
+      )
+      .then((data) => {
+        console.log(data.data);
+        navigate(`/transactionDetails/${card._id}`, { replace: true });
+      });
+
     updateModalRef.current.close();
-    navigate(`/transactionDetails/${card._id}`);
+  };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/myTransaction/${id}`)
+          .then((data) => {
+            // console.log(data);
+            if (data.data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your transaction has been deleted.",
+                icon: "success",
+              });
+
+              const remaining = myTransaction.filter((card) => card._id !== id);
+              setMyTransaction(remaining);
+            }
+          });
+      }
+    });
   };
   return (
     <div className="bg-[#0b1422] text-white rounded-2xl border border-gray-800 shadow-md hover:shadow-xl  transition-all duration-300 p-5 flex flex-col justify-between">
@@ -45,7 +101,7 @@ const Transaction = ({ card }) => {
         </p>
       </div>
 
-      <div className="flex gap-2 mt-5">
+      <div className="flex gap-1.5 mt-5">
         <button
           onClick={() => updateModalRef.current.showModal()}
           className="flex-1 btn btn-sm bg-linear-to-r from-cyan-400 to-indigo-600 text-white font-semibold border-none hover:opacity-90"
@@ -64,7 +120,7 @@ const Transaction = ({ card }) => {
                 <select
                   name="type"
                   id="type"
-                  defaultValue="Income"
+                  defaultValue={card.type}
                   onChange={handleType}
                   className="input border p-2 rounded w-full  bg-[#0b1422] text-white"
                 >
@@ -78,7 +134,7 @@ const Transaction = ({ card }) => {
                 <select
                   name="category"
                   id="category"
-                  defaultValue="Salary"
+                  defaultValue={card.category}
                   className="input border p-2 rounded w-full bg-[#0b1422] text-white"
                 >
                   {type === "Expense"
@@ -95,6 +151,7 @@ const Transaction = ({ card }) => {
                 <input
                   name="amount"
                   id="amount"
+                  defaultValue={card.amount}
                   type="number"
                   className="input border p-2 rounded w-full bg-[#0b1422] text-white"
                   min="1"
@@ -106,6 +163,7 @@ const Transaction = ({ card }) => {
                 <label htmlFor="description">Description</label>
                 <textarea
                   name="description"
+                  defaultValue={card.description}
                   id="description"
                   className="textarea border p-2 rounded w-full bg-[#0b1422] text-white"
                 />
@@ -120,7 +178,7 @@ const Transaction = ({ card }) => {
                   className="input border p-2 rounded w-full bg-[#0b1422] text-white"
                   min="2025-01-01"
                   max="2026-12-31"
-                  defaultValue={format(new Date(), "yyyy-MM-dd")}
+                  defaultValue={format(new Date(card.date), "yyyy-MM-dd")}
                 />
               </div>
 
@@ -133,7 +191,10 @@ const Transaction = ({ card }) => {
             </form>
           </div>
         </dialog>
-        <button className="flex-1 btn btn-sm bg-red-600 text-white font-semibold border-none hover:bg-red-700">
+        <button
+          onClick={() => handleDelete(card._id)}
+          className="flex-1 btn btn-sm bg-red-600 text-white font-semibold border-none hover:bg-red-700"
+        >
           Delete
         </button>
         <Link

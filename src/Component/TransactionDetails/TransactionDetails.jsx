@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 
 const TransactionDetails = () => {
   const transaction = useLoaderData();
-  console.log(transaction);
+  const [categoryData, setCategoryData] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:5000/myTransaction/${transaction.category}?email=${transaction.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCategoryData(data);
+      });
+  }, [transaction]);
+  //   console.log(transaction);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
@@ -39,7 +51,9 @@ const TransactionDetails = () => {
           </div>
           <div className="flex justify-between border-b border-gray-300 dark:border-gray-700 pb-2">
             <span className="font-semibold">Total in Category:</span>
-            <span className="text-green-400 font-semibold">$120,000</span>
+            <span className="text-green-400 font-semibold">
+              ${categoryData.reduce((sum, t) => sum + Number(t.amount), 0)}
+            </span>
           </div>
         </div>
       </div>
