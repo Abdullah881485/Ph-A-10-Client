@@ -1,14 +1,43 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../Provider/AuthContext";
 
 const Register = () => {
+  const { createUser, signInWithGoogle, setLoading } = use(AuthContext);
+  const navigate = useNavigate();
   const handleCreateUser = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
+    setLoading(true);
+    createUser(email, password)
+      .then((result) => {
+        alert("user created");
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("already have an account");
+      })
+      .finally(() => setLoading(false));
+
     console.log({ name, email, photo, password });
+  };
+  const handleGoogleSignIn = () => {
+    setLoading(true);
+    signInWithGoogle()
+      .then((result) => {
+        alert("account created with google");
+        console.log(result);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => setLoading(false));
   };
   return (
     <div className="w-4/10 mx-auto ">
@@ -60,44 +89,46 @@ const Register = () => {
           >
             Register
           </button>
-          <button className="btn rounded-md bg-white font-bold text-black border-[#e5e5e5] w-full mt-4  gap-2">
-            <svg
-              aria-label="Google logo"
-              width="16"
-              height="16"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <g>
-                <path d="m0 0H512V512H0" fill="#fff"></path>
-                <path
-                  fill="#34a853"
-                  d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                ></path>
-                <path
-                  fill="#4285f4"
-                  d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                ></path>
-                <path
-                  fill="#fbbc02"
-                  d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                ></path>
-                <path
-                  fill="#ea4335"
-                  d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                ></path>
-              </g>
-            </svg>
-            Continue with Google
-          </button>
-
-          <p className="mt-4">
-            Already have an account ?{" "}
-            <Link className="text-blue-400" to="/login">
-              Please,Login
-            </Link>
-          </p>
         </form>
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn rounded-md bg-white font-bold text-black border-[#e5e5e5] w-full mt-4  gap-2"
+        >
+          <svg
+            aria-label="Google logo"
+            width="16"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <g>
+              <path d="m0 0H512V512H0" fill="#fff"></path>
+              <path
+                fill="#34a853"
+                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+              ></path>
+              <path
+                fill="#4285f4"
+                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+              ></path>
+              <path
+                fill="#fbbc02"
+                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+              ></path>
+              <path
+                fill="#ea4335"
+                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+              ></path>
+            </g>
+          </svg>
+          Continue with Google
+        </button>
+        <p className="mt-4">
+          Already have an account ?{" "}
+          <Link className="text-blue-400" to="/login">
+            Please,Login
+          </Link>
+        </p>
       </div>
     </div>
   );

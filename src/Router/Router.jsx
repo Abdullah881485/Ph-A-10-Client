@@ -10,6 +10,7 @@ import Loader from "../Component/Loader/Loader";
 import Error from "../Component/Error/Error";
 import MyTransaction from "../Layout/MyTransaction/MyTransaction";
 import Report from "../Layout/Report/Report";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -24,19 +25,35 @@ const Router = createBrowserRouter([
       },
       {
         path: "/addTransaction",
-        Component: AddTransaction,
+        element: (
+          <PrivateRoute>
+            <AddTransaction></AddTransaction>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myTransaction",
-        Component: MyTransaction,
+        element: (
+          <PrivateRoute>
+            <MyTransaction></MyTransaction>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/reports",
-        Component: Report,
+        element: (
+          <PrivateRoute>
+            <Report></Report>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myProfile",
-        Component: MyProfile,
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

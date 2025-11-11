@@ -1,7 +1,11 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../Provider/AuthContext";
 
 const Header = () => {
+  const { user, signOutUser } = use(AuthContext);
+  console.log(user);
+
   const links = (
     <>
       <li>
@@ -21,6 +25,16 @@ const Header = () => {
       </li>
     </>
   );
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        alert("logged out successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className=" bg-base-100 shadow-sm">
       <div className="navbar w-9/10 mx-auto">
@@ -110,15 +124,57 @@ const Header = () => {
                 </g>
               </svg>
             </label>
-            <Link
-              to="/login"
-              className="btn border-2 border-gray-500  hover:scale-105"
-            >
-              Login
-            </Link>
-            <Link to="/register" className="my-button hover:scale-105">
-              Sign Up
-            </Link>
+            {user ? (
+              <div className="flex items-center gap-5">
+                <div className="dropdown dropdown-center">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="m-1 cursor-pointer"
+                  >
+                    <img
+                      className="w-10 rounded-full"
+                      src={`${
+                        user.photoURL
+                          ? user.photoURL
+                          : "https://i.ibb.co.com/HT6sMcVr/2015-10-06-FB-person.webp"
+                      }`}
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    tabIndex={0}
+                    className="dropdown-content card card-sm bg-[#0b1422] z-1 shadow-md m-3 p-2"
+                  >
+                    <div className="card-body   ">
+                      <h1 className="text-[15px] font-bold">
+                        {user.displayName ? user.displayName : "Anonymous"}
+                      </h1>
+                      <p className="text-xs font-semibold">{user.email}</p>
+                      <Link
+                        onClick={handleSignOut}
+                        to="/register"
+                        className="my-button btn-sm hover:scale-105 w-2/3 text-center mt-2"
+                      >
+                        Log Out
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center gap-5">
+                <Link
+                  to="/login"
+                  className="btn border-2 border-gray-500  hover:scale-105"
+                >
+                  Login
+                </Link>
+                <Link to="/register" className="my-button hover:scale-105">
+                  Sign Up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
