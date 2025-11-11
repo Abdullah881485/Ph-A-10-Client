@@ -46,6 +46,12 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
       )
       .then((data) => {
         console.log(data.data);
+        Swal.fire({
+          title: "",
+          text: "Your transaction updated Successfully",
+          icon: "success",
+          confirmButtonText: "Close",
+        });
         navigate(`/transactionDetails/${card._id}`, { replace: true });
       });
 
