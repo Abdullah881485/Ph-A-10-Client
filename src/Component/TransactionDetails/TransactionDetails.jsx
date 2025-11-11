@@ -1,0 +1,50 @@
+import React from "react";
+import { useLoaderData } from "react-router";
+
+const TransactionDetails = () => {
+  const transaction = useLoaderData();
+  console.log(transaction);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
+      <div className="bg-white dark:bg-[#0b1422] shadow-2xl rounded-2xl p-8 w-full max-w-md transition-all duration-300">
+        <h1 className="text-3xl font-extrabold text-center mb-6 title-font">
+          Transaction Details
+        </h1>
+
+        <div className="space-y-4 text-gray-700 dark:text-gray-200">
+          <div className="flex justify-between border-b border-gray-300 dark:border-gray-700 pb-2">
+            <span className="font-semibold">Type:</span>
+            <span className="text-indigo-500 font-medium">
+              {transaction.type}
+            </span>
+          </div>
+          <div className="flex justify-between border-b border-gray-300 dark:border-gray-700 pb-2">
+            <span className="font-semibold">Category:</span>
+            <span>{transaction.category}</span>
+          </div>
+          <div className="flex justify-between border-b border-gray-300 dark:border-gray-700 pb-2">
+            <span className="font-semibold">Amount:</span>
+            <span className="text-green-500 font-semibold">
+              ${transaction.amount}
+            </span>
+          </div>
+          <div className="flex justify-between border-b border-gray-300 dark:border-gray-700 pb-2">
+            <span className="font-semibold">Date:</span>
+            <span>{transaction.date}</span>
+          </div>
+          <div className="flex justify-between border-b border-gray-300 dark:border-gray-700 pb-2">
+            <span className="font-semibold">Description:</span>
+            <span>{transaction.description}</span>
+          </div>
+          <div className="flex justify-between border-b border-gray-300 dark:border-gray-700 pb-2">
+            <span className="font-semibold">Total in Category:</span>
+            <span className="text-green-400 font-semibold">$120,000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TransactionDetails;

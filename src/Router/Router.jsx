@@ -11,6 +11,7 @@ import Error from "../Component/Error/Error";
 import MyTransaction from "../Layout/MyTransaction/MyTransaction";
 import Report from "../Layout/Report/Report";
 import PrivateRoute from "../Provider/PrivateRoute";
+import TransactionDetails from "../Component/TransactionDetails/TransactionDetails";
 
 const Router = createBrowserRouter([
   {
@@ -33,9 +34,19 @@ const Router = createBrowserRouter([
       },
       {
         path: "/myTransaction",
+        loader: () => fetch("http://localhost:5000/myTransaction"),
         element: (
           <PrivateRoute>
             <MyTransaction></MyTransaction>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/transactionDetails/:id",
+        loader: ({params}) => fetch(`http://localhost:5000/transactionDetails/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <TransactionDetails></TransactionDetails>
           </PrivateRoute>
         ),
       },

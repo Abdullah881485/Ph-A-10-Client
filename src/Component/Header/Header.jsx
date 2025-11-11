@@ -29,20 +29,34 @@ const Header = () => {
   );
 
   const handleSignOut = () => {
-    signOutUser()
-      .then(() => {
-        Swal.fire({
-          title: "",
-          text: "You logged out Successfully",
-          icon: "success",
-          confirmButtonText: "Close",
-        });
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You'll be logged out of your account.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOutUser()
+          .then(() => {
+            Swal.fire({
+              title: "Logged out!",
+              text: "You have successfully logged out.",
+              icon: "success",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+            navigate("/login");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
   };
+
   return (
     <div className=" bg-base-100 shadow-sm">
       <div className="navbar w-9/10 mx-auto">
@@ -159,13 +173,12 @@ const Header = () => {
                         {user.displayName ? user.displayName : "Anonymous"}
                       </h1>
                       <p className="text-xs font-semibold">{user.email}</p>
-                      <Link
+                      <button
                         onClick={handleSignOut}
-                        to="/register"
                         className="my-button btn-sm hover:scale-105 w-2/3 text-center mt-2"
                       >
                         Log Out
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
