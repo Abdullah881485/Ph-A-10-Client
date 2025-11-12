@@ -121,37 +121,40 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
         >
           <div className="modal-box">
             <form method="dialog" onSubmit={handleUpdateTransaction}>
-              <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor="type">Type</label>
-                <select
-                  name="type"
-                  id="type"
-                  defaultValue={card.type}
-                  onChange={handleType}
-                  className="input border p-2 rounded w-full  bg-[#0b1422] text-white"
-                >
-                  <option>Income</option>
-                  <option>Expense</option>
-                </select>
+              <div className="flex items-center gap-6">
+                <div className="flex flex-col w-full gap-2 mb-4">
+                  <label htmlFor="type">Type</label>
+                  <select
+                    name="type"
+                    id="type"
+                    defaultValue={card.type}
+                    onChange={handleType}
+                    className="input border p-2 rounded  bg-[#0b1422] text-white"
+                  >
+                    <option>Income</option>
+                    <option>Expense</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-col w-full gap-2 mb-4">
+                  <label htmlFor="category">Category</label>
+                  <select
+                    name="category"
+                    id="category"
+                    defaultValue={card.category}
+                    className="input border p-2 rounded  bg-[#0b1422] text-white"
+                  >
+                    {type === "Expense"
+                      ? expense.map((cat, index) => (
+                          <option key={index}>{cat}</option>
+                        ))
+                      : income.map((cat, index) => (
+                          <option key={index}>{cat}</option>
+                        ))}
+                  </select>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor="category">Category</label>
-                <select
-                  name="category"
-                  id="category"
-                  defaultValue={card.category}
-                  className="input border p-2 rounded w-full bg-[#0b1422] text-white"
-                >
-                  {type === "Expense"
-                    ? expense.map((cat, index) => (
-                        <option key={index}>{cat}</option>
-                      ))
-                    : income.map((cat, index) => (
-                        <option key={index}>{cat}</option>
-                      ))}
-                </select>
-              </div>
               <div className="flex flex-col gap-2 mb-4">
                 <label htmlFor="amount">Amount</label>
                 <input
