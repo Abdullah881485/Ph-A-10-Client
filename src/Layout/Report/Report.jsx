@@ -83,8 +83,8 @@ const Report = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="w-9/10 mx-auto px-6 py-8   min-h-screen">
-      <h1 className="text-3xl font-bold text-center mb-8 dark:text-gray-200 ">
+    <div className="w-8/10 mx-auto px-6 py-8   min-h-screen">
+      <h1 className="text-3xl font-bold  mb-8  text-[#7c3aed] ">
         Financial Report
       </h1>
 

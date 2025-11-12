@@ -12,6 +12,8 @@ import MyTransaction from "../Layout/MyTransaction/MyTransaction";
 import Report from "../Layout/Report/Report";
 import PrivateRoute from "../Provider/PrivateRoute";
 import TransactionDetails from "../Component/TransactionDetails/TransactionDetails";
+import Policy from "../Layout/Policy";
+import Terms from "../Layout/Terms";
 
 const Router = createBrowserRouter([
   {
@@ -73,6 +75,14 @@ const Router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+      {
+        path: "/policy",
+        Component: Policy,
+      },
+      {
+        path: "/terms",
+        Component: Terms,
       },
     ],
   },

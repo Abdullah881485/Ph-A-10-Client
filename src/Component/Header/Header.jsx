@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 import Swal from "sweetalert2";
@@ -9,32 +9,34 @@ const Header = () => {
   console.log(user);
   const navigate = useNavigate();
 
-  const toggleTheme = () => {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute("data-theme");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "night"
+  );
 
-    if (currentTheme === "winter") {
-      html.setAttribute("data-theme", "night");
-    } else {
-      html.setAttribute("data-theme", "winter");
-    }
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  const toggleTheme = (checked) => {
+    setTheme(checked ? "winter" : "night");
   };
 
   const links = (
     <>
-      <li>
+      <li className="hover:text-[#7c3aed]">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li className="hover:text-[#7c3aed]">
         <NavLink to="/addTransaction">Add Transaction</NavLink>
       </li>
-      <li>
+      <li className="hover:text-[#7c3aed]">
         <NavLink to="/myTransaction">My Transaction</NavLink>
       </li>
-      <li>
+      <li className="hover:text-[#7c3aed]">
         <NavLink to="/reports">Reports</NavLink>
       </li>
-      <li>
+      <li className="hover:text-[#7c3aed]">
         <NavLink to="/myProfile">My Profile</NavLink>
       </li>
     </>
@@ -70,7 +72,7 @@ const Header = () => {
   };
 
   return (
-    <div className=" bg-base-100 shadow-sm">
+    <div className=" bg-base-100 shadow-bottom">
       <div className="navbar w-9/10 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -100,12 +102,12 @@ const Header = () => {
           </div>
 
           <div className="flex flex-col  gap-1">
-            <h1 className="logo-font text-4xl">FinEase</h1>
+            <h1 className="logo-font text-4xl text-[#7c3aed]">FinEase</h1>
             <p>Personal Finance Manager</p>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-1.5 font-bold dark:text-gray-200">
+          <ul className="space-x-4 text-[14px] menu-horizontal px-1 gap-1.5 font-bold dark:text-gray-200">
             {links}
           </ul>
         </div>
@@ -113,12 +115,26 @@ const Header = () => {
           <div className="flex items-center gap-5">
             <label className="toggle text-base-content">
               <input
-                onChange={toggleTheme}
+                onChange={(e) => toggleTheme(e.target.checked)}
                 type="checkbox"
                 value="light"
                 className="theme-controller"
               />
-
+              <svg
+                aria-label="moon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </g>
+              </svg>
               <svg
                 aria-label="sun"
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,22 +156,6 @@ const Header = () => {
                   <path d="M20 12h2"></path>
                   <path d="m6.34 17.66-1.41 1.41"></path>
                   <path d="m19.07 4.93-1.41 1.41"></path>
-                </g>
-              </svg>
-
-              <svg
-                aria-label="moon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                 </g>
               </svg>
             </label>
@@ -181,7 +181,7 @@ const Header = () => {
                     tabIndex={0}
                     className="dropdown-content card card-sm bg-[#0b1422] z-1 shadow-md  p-2 w-70"
                   >
-                    <div className="card-body   ">
+                    <div className="card-body  text-gray-200 ">
                       <h1 className="text-[15px] font-bold">
                         {user.displayName ? user.displayName : "Anonymous"}
                       </h1>
@@ -189,14 +189,14 @@ const Header = () => {
                       <div className="pt-2 border-t-2 border-gray-800">
                         <Link
                           to="/myProfile"
-                          className="  btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 w-full mt-2 "
+                          className=" basic-btn btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 hover:text-gray-200 w-full mt-2 "
                         >
                           <RiAccountCircle2Fill size={20} />
                           Profile
                         </Link>
                         <button
                           onClick={handleSignOut}
-                          className="my-button btn-sm hover:scale-105 w-full text-center mt-2 "
+                          className="my-button basic-btn btn-sm hover:scale-105 w-full text-center mt-2 "
                         >
                           Log Out
                         </button>
@@ -209,11 +209,11 @@ const Header = () => {
               <div className="flex items-center gap-5">
                 <Link
                   to="/login"
-                  className="btn border-2 border-gray-500  hover:scale-105"
+                  className="basic-btn border  border-gray-500  hover:scale-105"
                 >
-                  Login
+                  <p className="text-[#7c3aed]">Login</p>
                 </Link>
-                <Link to="/register" className="my-button hover:scale-105">
+                <Link to="/register" className="my-button basic-btn ">
                   Sign Up
                 </Link>
               </div>

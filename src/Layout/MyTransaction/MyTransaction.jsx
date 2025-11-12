@@ -45,7 +45,7 @@ const MyTransaction = () => {
         </div>
       ) : (
         <div>
-          <h1 className="text-3xl title-font my-5 text-start">
+          <h1 className="text-2xl text-[#7c3aed] title-font my-5 text-start">
             My Transaction
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">

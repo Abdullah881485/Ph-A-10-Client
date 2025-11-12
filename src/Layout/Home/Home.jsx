@@ -27,7 +27,7 @@ const Home = () => {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 md:p-10 my-5  text-white w-8/10 mx-auto">
       <div className="md:col-span-3 flex justify-between items-start  bg-[#0b1422]  p-5 rounded-xl shadow-lg">
         <div>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold text-[#7c3aed]">
             Plan better. Spend smarter. Save more.
           </h1>
           <p className="text-gray-400 mt-1">
@@ -37,7 +37,7 @@ const Home = () => {
         </div>
         <Link
           to="/addTransaction"
-          className="my-button transition duration-200 hover:scale-105"
+          className="my-button basic-btn transition duration-200 hover:scale-105"
         >
           Add Transaction
         </Link>
@@ -45,21 +45,25 @@ const Home = () => {
 
       <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">
         <h2 className="text-sm font-semibold text-gray-400">Total Balance</h2>
-        <p className="text-2xl font-bold mt-1">${balance > 0 ? balance : 0}</p>
+        <p className="text-2xl font-bold mt-1">{`$ ${
+          balance > 0 ? balance : 0
+        }`}</p>
       </div>
 
       <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">
         <h2 className="text-sm font-semibold text-gray-400">Total Income</h2>
-        <p className="text-2xl font-bold text-green-400 mt-1">${income}</p>
+        <p className="text-2xl font-bold text-green-400 mt-1">{`$ ${income}`}</p>
       </div>
 
       <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">
         <h2 className="text-sm font-semibold text-gray-400">Total Expense</h2>
-        <p className="text-2xl font-bold text-red-400 mt-1">${expense}</p>
+        <p className="text-2xl font-bold text-red-400 mt-1">{`$ ${expense}`}</p>
       </div>
 
       <div className="md:col-span-2 bg-[#0b1422]  p-6 rounded-xl shadow-lg">
-        <h2 className="text-xl font-bold mb-4">Budgeting Tips</h2>
+        <h2 className="text-xl font-bold mb-4 text-[#7c3aed]">
+          Budgeting Tips
+        </h2>
         <ul className="space-y-3 text-base">
           <li>
             <span className="font-semibold">1.</span> Track every transaction —
@@ -77,7 +81,7 @@ const Home = () => {
       </div>
 
       <div className="md:col-span-1 bg-[#0b1422]  p-6 rounded-xl shadow-lg flex flex-col justify-start">
-        <h2 className="text-xl font-bold mb-4">
+        <h2 className="text-xl font-bold mb-4 text-[#7c3aed]">
           Why Financial Planning Matters
         </h2>
         <p className="text-base text-gray-300 mb-4">
@@ -86,7 +90,7 @@ const Home = () => {
         </p>
         <Link
           to="/reports"
-          className="my-button transition duration-200 hover:scale-105 self-start"
+          className="my-button basic-btn self-start hover:shadow-2xl transition-shadow duration-200"
         >
           View Reports
         </Link>

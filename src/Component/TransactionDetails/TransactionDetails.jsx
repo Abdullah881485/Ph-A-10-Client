@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
+import { IoArrowBackCircle } from "react-icons/io5";
+import { Link, useLoaderData } from "react-router";
 
 const TransactionDetails = () => {
   const transaction = useLoaderData();
@@ -55,6 +56,16 @@ const TransactionDetails = () => {
               ${categoryData.reduce((sum, t) => sum + Number(t.amount), 0)}
             </span>
           </div>
+        </div>
+        <div>
+          <Link
+            className=" basic-btn my-button text-center rounded-sm border border-gray-800 mt-4 transition duration-200 self-start "
+            to="/myTransaction"
+          >
+            <p className="flex items-center gap-2 ">
+              <IoArrowBackCircle /> Back
+            </p>
+          </Link>
         </div>
       </div>
     </div>

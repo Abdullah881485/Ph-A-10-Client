@@ -63,7 +63,9 @@ const AddTransaction = () => {
   };
   return (
     <div className="w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10 text-gray-200">
-      <h1 className="text-2xl font-bold mb-4">Add Transaction</h1>
+      <h1 className="text-2xl font-bold mb-4 text-[#7c3aed]">
+        Add Transaction
+      </h1>
       <form onSubmit={handleAddTransaction}>
         <div className="flex items-center gap-6 ">
           <div className="flex flex-col w-full gap-2 mb-4">
@@ -159,16 +161,16 @@ const AddTransaction = () => {
           />
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-2">
           <button
             type="reset"
-            className="btn btn-outline mt-2 transition duration-200 self-start px-20"
+            className="py-1.5 px-20 text-[#7c3aed] rounded-sm font-bold cursor-pointer border border-gray-700 transition-all duration-300 hover:scale-105"
           >
             Reset
           </button>
           <button
             type="submit"
-            className="modal-submit mt-2 transition duration-200 self-start btn px-12 hover:opacity-80"
+            className="my-button basic-btn transition-all duration-200 "
           >
             Add Trsansaction
           </button>

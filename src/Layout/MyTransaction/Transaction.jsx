@@ -195,13 +195,13 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                 <button
                   onClick={() => updateModalRef.current.close()}
                   type="button"
-                  className="btn btn-outline mt-2 transition duration-200 self-start px-10"
+                  className=" py-2 text-[#7c3aed] font-bold hover:scale-105 transition-all duration-300 rounded-sm border border-gray-800 mt-2 cursor-pointer self-start px-10"
                 >
                   Close
                 </button>
                 <button
                   type="submit"
-                  className="modal-submit mt-2 transition duration-200 self-start btn px-10"
+                  className="basic-btn my-button mt-2 transition duration-200 self-start btn px-10"
                 >
                   Update
                 </button>

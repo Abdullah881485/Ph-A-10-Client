@@ -79,14 +79,14 @@ const Login = () => {
 
           <button
             type="submit"
-            className="my-button mt-2 transition duration-200 self-start w-full hover:opacity-80"
+            className="my-button basic-btn mt-2 transition duration-300 self-start w-full"
           >
             Login
           </button>
         </form>
         <button
           onClick={handleGoogleSignIn}
-          className="btn rounded-lg bg-black text-white font-bold hover:opacity-80 w-full mt-4  gap-2"
+          className="basic-btn flex items-center justify-center bg-black  font-bold hover:scale-105 transition-all duration-300 w-full mt-4  gap-2"
         >
           <FcGoogle />
           Continue with Google
