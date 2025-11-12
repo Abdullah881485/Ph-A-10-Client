@@ -2,22 +2,30 @@ import React, { use, useEffect, useState } from "react";
 import Transaction from "./Transaction";
 import { AuthContext } from "../../Provider/AuthContext";
 import { Link } from "react-router";
+import Loader from "../../Component/Loader/Loader";
 
 const MyTransaction = () => {
   const { user } = use(AuthContext);
   const [myTransaction, setMyTransaction] = useState([]);
+  const [loading, setLoading] = useState(false);
   // console.log(transactions);
   useEffect(() => {
+    setLoading(true);
     if (user?.email) {
       fetch(`http://localhost:5000/myTransaction?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           setMyTransaction(data);
-        });
+        })
+        .catch((err) => console.error(err))
+        .finally(() => setLoading(false));
     }
   }, [user]);
   console.log(myTransaction);
+  if (loading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="w-6/10 mx-auto min-h-screen">

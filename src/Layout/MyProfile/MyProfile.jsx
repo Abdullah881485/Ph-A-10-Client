@@ -22,10 +22,7 @@ const MyProfile = () => {
   return (
     <div>
       <title>FinEase | My Profile</title>
-      <div
-        data-aos="zoom-in"
-        className=" w-[90%] md:w-[50%] mx-auto my-20 bg-[#0b1422] p-10 rounded-2xl"
-      >
+      <div className=" w-[90%] md:w-[50%] mx-auto my-20 bg-[#0b1422] p-10 rounded-2xl text-gray-200">
         <h1 className="mb-5 text-2xl font-bold ">My Profile</h1>
         <div className="flex items-center gap-5">
           <img
@@ -39,23 +36,28 @@ const MyProfile = () => {
           />
           <div className="flex flex-col">
             <h1 className="text-lg font-bold">{user.displayName}</h1>
-            <p className="text-gray-500 text-[12px] sm:text-sm">{user.email}</p>
+            <p className="text-gray-300 text-[12px] sm:text-sm">{user.email}</p>
           </div>
         </div>
         <form onSubmit={handleUpdate}>
           <div className="flex flex-col my-3">
-            <label className="label text-sm md:text-lg"> Name</label>
+            <label className="label text-gray-200 font-semibold text-sm md:text-lg">
+              {" "}
+              Name
+            </label>
             <input
               name="name"
               type="text"
-              className="input w-full placeholder:text-sm md:placeholder:text-[16px] bg-transparent"
+              className="input w-full placeholder:text-sm md:placeholder:text-[15px] bg-[#0b1422]"
               placeholder="Enter Your Name"
             />
-            <label className="label text-sm md:text-lg mt-4">Photo URL</label>
+            <label className="label text-sm md:text-lg mt-4 text-gray-200 font-semibold">
+              Photo URL
+            </label>
             <input
               name="photo"
               type="text"
-              className="input w-full bg-transparent"
+              className="input w-full bg-[#0b1422]"
             />
 
             <button

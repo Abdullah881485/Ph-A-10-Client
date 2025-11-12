@@ -62,7 +62,7 @@ const AddTransaction = () => {
     // console.log({ type, category, amount, description, date, email, name });
   };
   return (
-    <div className="w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10">
+    <div className="w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10 text-gray-200">
       <h1 className="text-2xl font-bold mb-4">Add Transaction</h1>
       <form onSubmit={handleAddTransaction}>
         <div className="flex items-center gap-6 ">

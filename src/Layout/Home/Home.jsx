@@ -20,6 +20,7 @@ const Home = () => {
   const expense = money
     .filter((rep) => rep.type === "Expense")
     .reduce((sum, rep) => sum + Number(rep.amount), 0);
+
   const balance = income - expense;
   console.log(income, expense, balance);
   return (
@@ -44,7 +45,7 @@ const Home = () => {
 
       <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">
         <h2 className="text-sm font-semibold text-gray-400">Total Balance</h2>
-        <p className="text-2xl font-bold mt-1">${balance}</p>
+        <p className="text-2xl font-bold mt-1">${balance > 0 ? balance : 0}</p>
       </div>
 
       <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">

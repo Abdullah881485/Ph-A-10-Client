@@ -110,7 +110,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
       <div className="flex gap-1.5 mt-5">
         <button
           onClick={() => updateModalRef.current.showModal()}
-          className="flex-1 btn btn-sm bg-linear-to-r from-cyan-400 to-indigo-600 text-white font-semibold border-none hover:opacity-90"
+          className="bg-[#7c3aed] flex-1 btn btn-sm  text-white font-semibold border-none hover:bg-[#8b5cf6]"
         >
           Update
         </button>
@@ -119,7 +119,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
           ref={updateModalRef}
           className="modal modal-bottom sm:modal-middle"
         >
-          <div className="modal-box">
+          <div className="modal-box bg-[#0b1422] text-gray-200">
             <form method="dialog" onSubmit={handleUpdateTransaction}>
               <div className="flex items-center gap-6">
                 <div className="flex flex-col w-full gap-2 mb-4">

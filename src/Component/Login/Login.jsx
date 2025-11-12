@@ -52,7 +52,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="w-4/10 mx-auto ">
+    <div className="w-4/10 mx-auto text-gray-200 ">
       <div className="p-6  rounded-2xl shadow bg-[#0b1422] my-20">
         <h1 className="text-2xl font-bold mb-10 text-center">
           Login to FinEase

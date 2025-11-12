@@ -7,6 +7,11 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LineChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Line,
 } from "recharts";
 import Loader from "../../Component/Loader/Loader";
 
@@ -28,6 +33,7 @@ const Report = () => {
   const [loading, setLoading] = useState(false);
 
   const incomeCategories = ["Salary", "Business", "Investment", "Other"];
+
   const expenseCategories = [
     "Home",
     "Food",
@@ -51,13 +57,20 @@ const Report = () => {
     }
   }, [user]);
 
+  const data = report.map((t, index) => ({
+    name: `Txn ${index + 1}`,
+    income: t.type === "Income" ? Number(t.amount) : 0,
+    expense: t.type === "Expense" ? Number(t.amount) : 0,
+  }));
+  // console.log(data);
+
   const incomeData = incomeCategories.map((cat) => ({
     name: cat,
     value: report
       .filter((t) => t.category === cat && t.type === "Income")
       .reduce((sum, t) => sum + Number(t.amount), 0),
   }));
-  console.log(incomeData);
+  // console.log(incomeData);
 
   const expenseData = expenseCategories.map((cat) => ({
     name: cat,
@@ -71,16 +84,64 @@ const Report = () => {
   }
   return (
     <div className="w-9/10 mx-auto px-6 py-8   min-h-screen">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
+      <h1 className="text-3xl font-bold text-center mb-8 dark:text-gray-200 ">
         Financial Report
       </h1>
 
+      <div className="w-full mb-12 bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
+        <h2 className="text-xl font-semibold text-center text-gray-200 mb-6">
+          Income vs Expense Overview
+        </h2>
+        {data.length === 0 ? (
+          <p className="text-center text-gray-300">No transactions found.</p>
+        ) : (
+          <ResponsiveContainer width="100%" height={350}>
+            <LineChart
+              data={data}
+              margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+              <XAxis dataKey="name" tick={{ fill: "#cbd5e1" }} />
+              <YAxis tick={{ fill: "#cbd5e1" }} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#101826",
+                  border: "1px solid #7c3aed",
+                  borderRadius: "10px",
+                  color: "#f1f5f9",
+                }}
+              />
+              <Legend wrapperStyle={{ color: "#cbd5e1" }} />
+
+              <Line
+                type="monotone"
+                dataKey="income"
+                name="Income"
+                stroke="#7c3aed"
+                strokeWidth={3}
+                dot={{ r: 5, fill: "#a78bfa" }}
+                activeDot={{ r: 8, fill: "#c084fc" }}
+              />
+
+              <Line
+                type="monotone"
+                dataKey="expense"
+                name="Expense"
+                stroke="#06b6d4"
+                strokeWidth={3}
+                dot={{ r: 5, fill: "#22d3ee" }}
+                activeDot={{ r: 8, fill: "#67e8f9" }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        )}
+      </div>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="flex-1 bg-white dark:bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
+        <div className="flex-1  bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
           {expenseData.some((data) => data.value > 0) ? (
             <div>
-              <h2 className="text-xl font-semibold mb-4 text-center text-gray-700 dark:text-gray-200">
-                Expenses by Category
+              <h2 className="text-xl font-semibold mb-4 text-center text-gray-200">
+                My Expenses
               </h2>
               <ResponsiveContainer width="100%" height={350}>
                 <PieChart>
@@ -120,7 +181,7 @@ const Report = () => {
               </ResponsiveContainer>
             </div>
           ) : (
-            <h1 className="text-center text-gray-700 dark:text-gray-200 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
+            <h1 className="text-center  text-gray-200 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
               No Expense Found
               <img
                 className="w-70"
@@ -131,11 +192,11 @@ const Report = () => {
           )}
         </div>
 
-        <div className="flex-1 bg-white dark:bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
+        <div className="flex-1  bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
           {incomeData.some((data) => data.value > 0) ? (
             <div>
-              <h2 className="text-xl  font-semibold mb-4 text-center text-gray-700 dark:text-gray-200">
-                Income by Category
+              <h2 className="text-xl  font-semibold mb-4 text-center  text-gray-200">
+                My Income
               </h2>
               <ResponsiveContainer width="100%" height={330}>
                 <PieChart>
@@ -175,7 +236,7 @@ const Report = () => {
               </ResponsiveContainer>
             </div>
           ) : (
-            <h1 className="text-center text-gray-700 dark:text-gray-200 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
+            <h1 className="text-center  text-gray-200 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
               No Income Found
               <img
                 className="w-70"
