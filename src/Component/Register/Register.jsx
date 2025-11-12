@@ -150,14 +150,14 @@ const Register = () => {
         </form>
         <button
           onClick={handleGoogleSignIn}
-          className="basic-btn bg-black text-white font-bold hover:scale-105 transition-all duration-300 flex items-center justify-center w-full mt-4  gap-2"
+          className="flex cursor-pointer items-center justify-center border border-gray-600 rounded-lg py-2 mt-4 w-full gap-2 text-white hover:bg-gray-900 transition duration-300"
         >
           <FcGoogle />
           Continue with Google
         </button>
         <p className="mt-4">
           Already have an account ?{" "}
-          <Link className="text-blue-400" to="/login">
+          <Link className="text-[#7c3aed] " to="/login">
             Please,Login
           </Link>
         </p>
