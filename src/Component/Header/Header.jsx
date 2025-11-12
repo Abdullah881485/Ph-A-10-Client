@@ -9,6 +9,17 @@ const Header = () => {
   console.log(user);
   const navigate = useNavigate();
 
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute("data-theme");
+
+    if (currentTheme === "winter") {
+      html.setAttribute("data-theme", "night");
+    } else {
+      html.setAttribute("data-theme", "winter");
+    }
+  };
+
   const links = (
     <>
       <li>
@@ -102,6 +113,7 @@ const Header = () => {
           <div className="flex items-center gap-5">
             <label className="toggle text-base-content">
               <input
+                onChange={toggleTheme}
                 type="checkbox"
                 value="light"
                 className="theme-controller"

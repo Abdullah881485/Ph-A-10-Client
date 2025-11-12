@@ -8,6 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import Loader from "../../Component/Loader/Loader";
 
 const COLORS = [
   "#22c55e",
@@ -24,6 +25,7 @@ const COLORS = [
 const Report = () => {
   const { user } = useContext(AuthContext);
   const [report, setReport] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const incomeCategories = ["Salary", "Business", "Investment", "Other"];
   const expenseCategories = [
@@ -39,11 +41,13 @@ const Report = () => {
   ];
 
   useEffect(() => {
+    setLoading(true);
     if (user?.email) {
       fetch(`http://localhost:5000/myTransaction?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setReport(data))
-        .catch((err) => console.error(err));
+        .catch((err) => console.error(err))
+        .finally(() => setLoading(false));
     }
   }, [user]);
 
@@ -62,6 +66,9 @@ const Report = () => {
       .reduce((sum, t) => sum + Number(t.amount), 0),
   }));
 
+  if (loading) {
+    return <Loader></Loader>;
+  }
   return (
     <div className="w-9/10 mx-auto px-6 py-8   min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
