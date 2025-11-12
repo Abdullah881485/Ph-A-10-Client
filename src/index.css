@@ -28,3 +28,12 @@
 
   font-weight: 700;
 }
+.modal-submit {
+  background: linear-gradient(90deg, #22c1c3, #4f46e5);
+  border: none;
+  color: white;
+
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}

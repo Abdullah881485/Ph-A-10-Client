@@ -58,53 +58,74 @@ const AddTransaction = () => {
           e.target.reset();
         }
       });
+
     // console.log({ type, category, amount, description, date, email, name });
   };
   return (
     <div className="w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10">
       <h1 className="text-2xl font-bold mb-4">Add Transaction</h1>
       <form onSubmit={handleAddTransaction}>
-        <div className="flex flex-col gap-2 mb-4">
-          <label htmlFor="type">Type</label>
-          <select
-            name="type"
-            required
-            id="type"
-            defaultValue="Income"
-            onChange={handleType}
-            className="input border p-2 rounded w-full  bg-[#0b1422] text-white"
-          >
-            <option>Income</option>
-            <option>Expense</option>
-          </select>
-        </div>
+        <div className="flex items-center gap-6 ">
+          <div className="flex flex-col w-full gap-2 mb-4">
+            <label htmlFor="type">Type</label>
+            <select
+              name="type"
+              required
+              id="type"
+              defaultValue="Income"
+              onChange={handleType}
+              className="input border p-2 rounded  bg-[#0b1422] text-white"
+            >
+              <option>Income</option>
+              <option>Expense</option>
+            </select>
+          </div>
 
-        <div className="flex flex-col gap-2 mb-4">
-          <label htmlFor="category">Category</label>
-          <select
-            name="category"
-            required
-            id="category"
-            defaultValue="Salary"
-            className="input border p-2 rounded w-full bg-[#0b1422] text-white"
-          >
-            {type === "Expense"
-              ? expense.map((cat, index) => <option key={index}>{cat}</option>)
-              : income.map((cat, index) => <option key={index}>{cat}</option>)}
-          </select>
+          <div className="flex flex-col w-full gap-2 mb-4">
+            <label htmlFor="category">Category</label>
+            <select
+              name="category"
+              required
+              id="category"
+              defaultValue="Salary"
+              className="input border p-2 rounded bg-[#0b1422] text-white"
+            >
+              {type === "Expense"
+                ? expense.map((cat, index) => (
+                    <option key={index}>{cat}</option>
+                  ))
+                : income.map((cat, index) => (
+                    <option key={index}>{cat}</option>
+                  ))}
+            </select>
+          </div>
         </div>
-
-        <div className="flex flex-col gap-2 mb-4">
-          <label htmlFor="amount">Amount</label>
-          <input
-            name="amount"
-            id="amount"
-            type="number"
-            className="input border p-2 rounded w-full bg-[#0b1422] text-white"
-            required
-            min="1"
-            max="1000000000000000000000000000"
-          />
+        <div className="flex items-center gap-6">
+          <div className="flex flex-col w-full gap-2 mb-4">
+            <label htmlFor="amount">Amount</label>
+            <input
+              name="amount"
+              id="amount"
+              type="number"
+              className="input border p-2 rounded  bg-[#0b1422] text-white"
+              required
+              min="1"
+              max="1000000000000000000000000000"
+            />
+          </div>
+          <div className="flex flex-col w-full gap-2 mb-4">
+            <label htmlFor="date">Date</label>
+            <input
+              name="date"
+              type="date"
+              id="date"
+              className="input border p-2 rounded  bg-[#0b1422] text-white"
+              required
+              min="2025-01-01"
+              max="2026-12-31"
+              defaultValue={format(new Date(), "yyyy-MM-dd")}
+            />
+          </div>
         </div>
 
         <div className="flex flex-col gap-2 mb-4">
@@ -117,19 +138,6 @@ const AddTransaction = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-2 mb-4">
-          <label htmlFor="date">Date</label>
-          <input
-            name="date"
-            type="date"
-            id="date"
-            className="input border p-2 rounded w-full bg-[#0b1422] text-white"
-            required
-            min="2025-01-01"
-            max="2026-12-31"
-            defaultValue={format(new Date(), "yyyy-MM-dd")}
-          />
-        </div>
         <div className="flex flex-col gap-2 mb-4">
           <label htmlFor="user">User Email</label>
           <input
@@ -151,12 +159,20 @@ const AddTransaction = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="my-button mt-2 transition duration-200 self-start w-full"
-        >
-          Add Transaction
-        </button>
+        <div className="flex items-center justify-between">
+          <button
+            type="reset"
+            className="btn btn-outline mt-2 transition duration-200 self-start px-20"
+          >
+            Reset
+          </button>
+          <button
+            type="submit"
+            className="modal-submit mt-2 transition duration-200 self-start btn px-12 hover:opacity-80"
+          >
+            Add Trsansaction
+          </button>
+        </div>
       </form>
     </div>
   );

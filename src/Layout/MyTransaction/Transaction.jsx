@@ -188,12 +188,21 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="my-button mt-2 transition duration-200 self-start w-full"
-              >
-                Update
-              </button>
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => updateModalRef.current.close()}
+                  type="button"
+                  className="btn btn-outline mt-2 transition duration-200 self-start px-10"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  className="modal-submit mt-2 transition duration-200 self-start btn px-10"
+                >
+                  Update
+                </button>
+              </div>
             </form>
           </div>
         </dialog>
