@@ -19,15 +19,16 @@ const Router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    hydrateFallbackElement: <Loader></Loader>,
     errorElement: <Error></Error>,
     children: [
       {
         index: true,
+        hydrateFallbackElement: <Loader></Loader>,
         Component: Home,
       },
       {
         path: "/addTransaction",
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
             <AddTransaction></AddTransaction>
@@ -36,6 +37,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/myTransaction",
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
             <MyTransaction></MyTransaction>
@@ -44,6 +46,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/transactionDetails/:id",
+        hydrateFallbackElement: <Loader></Loader>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/transactionDetails/${params.id}`),
         element: (
@@ -54,6 +57,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/reports",
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
             <Report></Report>
@@ -62,6 +66,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/myProfile",
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
             <MyProfile></MyProfile>
@@ -70,18 +75,22 @@ const Router = createBrowserRouter([
       },
       {
         path: "/login",
+        hydrateFallbackElement: <Loader></Loader>,
         Component: Login,
       },
       {
         path: "/register",
+        hydrateFallbackElement: <Loader></Loader>,
         Component: Register,
       },
       {
         path: "/policy",
+        hydrateFallbackElement: <Loader></Loader>,
         Component: Policy,
       },
       {
         path: "/terms",
+        hydrateFallbackElement: <Loader></Loader>,
         Component: Terms,
       },
     ],

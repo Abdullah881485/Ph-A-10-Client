@@ -39,7 +39,7 @@ const MyTransaction = () => {
           <p className="w-70 mb-3 text-center font-semibold text-[17px]">
             You don't have any transactions yet. Create one now!
           </p>
-          <Link to="/addTransaction" className="my-button">
+          <Link to="/addTransaction" className="my-button basic-btn">
             Add Transaction
           </Link>
         </div>

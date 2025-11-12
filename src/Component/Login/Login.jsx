@@ -57,7 +57,7 @@ const Login = () => {
         <div className="hidden md:block md:w-1/2">
           <img
             className="h-full w-full object-cover"
-            src="https://i.ibb.co.com/qLPVqqyg/360-F-195160069-lv-Zz-Kt3-QJS8-GNXYy-Qp-J55f-FTNHhxo8t-P.jpg"
+            src="https://i.ibb.co.com/WWcnkFyy/market-growth-blueprint-3d-coin-background-blue-finance-graph-investment-bar-763042-6385.jpg"
             alt="Login illustration"
           />
         </div>
@@ -96,7 +96,7 @@ const Login = () => {
 
           <button
             onClick={handleGoogleSignIn}
-            className="flex cursor-pointer items-center justify-center border border-gray-600 rounded-lg py-2 mt-4 w-full gap-2 text-white hover:bg-gray-900 transition duration-300"
+            className="flex hover-glow cursor-pointer items-center justify-center border border-gray-600 rounded-lg py-2 mt-4 w-full gap-2 text-white hover:bg-gray-900 transition duration-300"
           >
             <FcGoogle />
             <p className="">Continue with Google</p>

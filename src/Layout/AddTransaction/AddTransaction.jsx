@@ -4,8 +4,10 @@ import { AuthContext } from "../../Provider/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { format } from "date-fns";
+import Loader from "../../Component/Loader/Loader";
 
 const AddTransaction = () => {
+  const [loading, setLoading] = useState(false);
   const { user } = use(AuthContext);
   const [type, setType] = useState("");
   const income = ["Salary", "Business", "Investment", "Other"];
@@ -25,7 +27,7 @@ const AddTransaction = () => {
   };
   const handleAddTransaction = (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const form = e.target;
     const type = form.type.value;
     const category = form.category.value;
@@ -55,9 +57,17 @@ const AddTransaction = () => {
             icon: "success",
             confirmButtonText: "Close",
           });
+          setLoading(false);
           e.target.reset();
         }
+      })
+      .catch((error) => {
+        console.error("Error adding transaction:", error);
+        setLoading(false);
       });
+    if (loading) {
+      return <Loader></Loader>;
+    }
 
     // console.log({ type, category, amount, description, date, email, name });
   };
@@ -164,7 +174,7 @@ const AddTransaction = () => {
         <div className="flex items-center justify-between mt-2">
           <button
             type="reset"
-            className="py-1.5 px-20 text-[#7c3aed] rounded-sm font-bold cursor-pointer border border-gray-700 transition-all duration-300 hover:scale-105"
+            className="py-1.5 hover-glow px-20 text-[#7c3aed] rounded-sm font-bold cursor-pointer border border-gray-700 "
           >
             Reset
           </button>

@@ -196,7 +196,7 @@ const Header = () => {
                         </Link>
                         <button
                           onClick={handleSignOut}
-                          className="my-button basic-btn btn-sm hover:scale-105 w-full text-center mt-2 "
+                          className="my-button basic-btn btn-sm  w-full text-center mt-2 "
                         >
                           Log Out
                         </button>
@@ -209,7 +209,7 @@ const Header = () => {
               <div className="flex items-center gap-5">
                 <Link
                   to="/login"
-                  className="basic-btn border  border-gray-500  hover:scale-105"
+                  className="basic-btn border hover-glow border-gray-500  "
                 >
                   <p className="text-[#7c3aed]">Login</p>
                 </Link>

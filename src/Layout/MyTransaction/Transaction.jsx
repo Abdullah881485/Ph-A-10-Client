@@ -88,7 +88,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
     });
   };
   return (
-    <div className="bg-[#0b1422] text-white rounded-2xl border border-gray-800 shadow-md hover:shadow-xl  transition-all duration-300 p-5 flex flex-col justify-between">
+    <div className="bg-[#0b1422] text-white rounded-2xl border border-gray-800 shadow-md hover:shadow-xl hover-glow transition-all duration-300 p-5 flex flex-col justify-between">
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-bold tracking-wide">{card.type}</h2>
         <span className="px-2 py-1 text-xs font-semibold rounded-full bg-green-600/20 text-green-400 border border-green-600/30">
@@ -195,7 +195,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                 <button
                   onClick={() => updateModalRef.current.close()}
                   type="button"
-                  className=" py-2 text-[#7c3aed] font-bold hover:scale-105 transition-all duration-300 rounded-sm border border-gray-800 mt-2 cursor-pointer self-start px-10"
+                  className=" py-2 hover-glow text-[#7c3aed] font-bold  rounded-sm border border-gray-800 mt-2 cursor-pointer self-start px-10"
                 >
                   Close
                 </button>

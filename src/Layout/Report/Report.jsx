@@ -88,7 +88,7 @@ const Report = () => {
         Financial Report
       </h1>
 
-      <div className="w-full mb-12 bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
+      <div className="w-full mb-12 bg-[#0b1422] hover-glow shadow-lg rounded-2xl p-6 transition-all duration-300 ">
         <h2 className="text-xl font-semibold text-center text-gray-200 mb-6">
           Income vs Expense Overview
         </h2>
@@ -137,7 +137,7 @@ const Report = () => {
         )}
       </div>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="flex-1  bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
+        <div className="flex-1 hover-glow bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 ">
           {expenseData.some((data) => data.value > 0) ? (
             <div>
               <h2 className="text-xl font-semibold mb-4 text-center text-gray-200">
@@ -192,7 +192,7 @@ const Report = () => {
           )}
         </div>
 
-        <div className="flex-1  bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl">
+        <div className="flex-1  bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover-glow">
           {incomeData.some((data) => data.value > 0) ? (
             <div>
               <h2 className="text-xl  font-semibold mb-4 text-center  text-gray-200">

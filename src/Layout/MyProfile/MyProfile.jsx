@@ -62,7 +62,7 @@ const MyProfile = () => {
 
             <button
               type="submit"
-              className=" w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 my-button basic-btn transition duration-200 hover:scale-105 self-start mt-5"
+              className=" w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 my-button basic-btn self-start mt-5"
             >
               Update Profile
             </button>

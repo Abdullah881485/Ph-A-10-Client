@@ -1,19 +1,28 @@
 import React, { use, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
+import { IoTrendingUpSharp } from "react-icons/io5";
+import { IoMdTrendingDown } from "react-icons/io";
+import Loader from "../../Component/Loader/Loader";
 
 const Home = () => {
   const { user } = use(AuthContext);
   const [money, setMoney] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     if (user?.email) {
       fetch(`http://localhost:5000/myTransaction?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setMoney(data);
-        });
+        })
+        .finally(() => setLoading(false));
     }
   }, [user]);
+  if (loading) {
+    return <Loader></Loader>;
+  }
   const income = money
     .filter((rep) => rep.type === "Income")
     .reduce((sum, rep) => sum + Number(rep.amount), 0);
@@ -35,29 +44,34 @@ const Home = () => {
             start maintaining financial wellbeing today.
           </p>
         </div>
-        <Link
-          to="/addTransaction"
-          className="my-button basic-btn transition duration-200 hover:scale-105"
-        >
+        <Link to="/addTransaction" className="my-button basic-btn ">
           Add Transaction
         </Link>
       </div>
 
-      <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">
-        <h2 className="text-sm font-semibold text-gray-400">Total Balance</h2>
-        <p className="text-2xl font-bold mt-1">{`$ ${
-          balance > 0 ? balance : 0
-        }`}</p>
+      <div className="bg-[#0b1422] hover-glow rounded-xl py-5 pl-5 pr-10 shadow-lg flex items-center justify-between">
+        <div>
+          <h2 className="text-sm font-semibold text-gray-400">Total Balance</h2>
+          <p className="text-2xl font-bold mt-1">{`$ ${
+            balance > 0 ? balance : 0
+          }`}</p>
+        </div>
       </div>
 
-      <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">
-        <h2 className="text-sm font-semibold text-gray-400">Total Income</h2>
-        <p className="text-2xl font-bold text-green-400 mt-1">{`$ ${income}`}</p>
+      <div className="bg-[#0b1422] hover-glow py-5 pl-5 pr-10 rounded-xl shadow-lg flex items-center justify-between">
+        <div>
+          <h2 className="text-sm font-semibold text-gray-400">Total Income</h2>
+          <p className="text-2xl font-bold text-green-400 mt-1">{`$ ${income}`}</p>
+        </div>
+        <IoTrendingUpSharp className="text-green-500" size={60} />
       </div>
 
-      <div className="bg-[#0b1422]  p-5 rounded-xl shadow-lg">
-        <h2 className="text-sm font-semibold text-gray-400">Total Expense</h2>
-        <p className="text-2xl font-bold text-red-400 mt-1">{`$ ${expense}`}</p>
+      <div className="bg-[#0b1422] hover-glow py-5 pl-5 pr-10 rounded-xl shadow-lg flex items-center justify-between">
+        <div>
+          <h2 className="text-sm font-semibold text-gray-400">Total Expense</h2>
+          <p className="text-2xl font-bold text-red-400 mt-1">{`$ ${expense}`}</p>
+        </div>
+        <IoMdTrendingDown className="text-red-500" size={60} />
       </div>
 
       <div className="md:col-span-2 bg-[#0b1422]  p-6 rounded-xl shadow-lg">

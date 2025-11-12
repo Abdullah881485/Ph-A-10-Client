@@ -5,13 +5,13 @@ import { NavLink } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0b1422] text-gray-300 border-t border-gray-800 py-8">
+    <footer className=" dark:text-gray-300 shadow-top py-8">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col items-center md:items-start">
           <h2 className="text-3xl font-extrabold text-[#7c3aed] tracking-wide">
             FinEase
           </h2>
-          <p className="text-sm mt-1 text-gray-400">
+          <p className="text-sm mt-1 dark:text-gray-400">
             Empowering your finances with clarity and ease.
           </p>
           <span className="text-xs mt-2 text-gray-500">
