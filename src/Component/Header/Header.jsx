@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 import Swal from "sweetalert2";
+import { RiAccountCircle2Fill } from "react-icons/ri";
 
 const Header = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -149,7 +150,7 @@ const Header = () => {
 
             {user ? (
               <div className="flex items-center gap-5">
-                <div className="dropdown dropdown-center">
+                <div className="dropdown dropdown-end">
                   <div
                     tabIndex={0}
                     role="button"
@@ -166,19 +167,28 @@ const Header = () => {
                   </div>
                   <div
                     tabIndex={0}
-                    className="dropdown-content card card-sm bg-[#0b1422] z-1 shadow-md m-3 p-2 w-60"
+                    className="dropdown-content card card-sm bg-[#0b1422] z-1 shadow-md  p-2 w-70"
                   >
                     <div className="card-body   ">
                       <h1 className="text-[15px] font-bold">
                         {user.displayName ? user.displayName : "Anonymous"}
                       </h1>
                       <p className="text-xs font-semibold">{user.email}</p>
-                      <button
-                        onClick={handleSignOut}
-                        className="my-button btn-sm hover:scale-105 w-2/3 text-center mt-2"
-                      >
-                        Log Out
-                      </button>
+                      <div className="pt-2 border-t-2 border-gray-800">
+                        <Link
+                          to="/myProfile"
+                          className="  btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 w-full mt-2 "
+                        >
+                          <RiAccountCircle2Fill size={20} />
+                          Profile
+                        </Link>
+                        <button
+                          onClick={handleSignOut}
+                          className="my-button btn-sm hover:scale-105 w-full text-center mt-2 "
+                        >
+                          Log Out
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
