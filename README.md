@@ -33,20 +33,6 @@ FinEase is a comprehensive personal finance management web application that empo
 - **Node.js + Express** - Server runtime
 - **MongoDB** - Database
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v16+)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Create `.env.local` with your Firebase credentials
-4. Start dev server: `npm run dev`
-5. Build for production: `npm run build`
 
 ## 🔒 Security Features
 
@@ -56,14 +42,5 @@ FinEase is a comprehensive personal finance management web application that empo
 - Read-only user fields in forms
 - Environment variables for sensitive data
 
-## 🤝 Contributing
-
-Contributions are welcome! Please submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
----
 
 **GitHub Repository:** [Abdullah881485/Ph-A-10-Client](https://github.com/Abdullah881485/Ph-A-10-Client)
