@@ -49,7 +49,11 @@ const Report = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      fetch(`http://localhost:5000/myTransaction?email=${user.email}`)
+      fetch(`http://localhost:5000/myTransaction?email=${user.email}`, {
+        headers: {
+          authorization: `Bearer ${user?.accessToken || ""} `,
+        },
+      })
         .then((res) => res.json())
         .then((data) => setReport(data))
         .catch((err) => console.error(err))
@@ -83,7 +87,7 @@ const Report = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="w-8/10 mx-auto px-6 py-8   min-h-screen">
+    <div className=" w-9/10 md:w-8/10 mx-auto  py-8   min-h-screen">
       <h1 className="text-3xl font-bold  mb-8  text-[#7c3aed] ">
         Financial Report
       </h1>

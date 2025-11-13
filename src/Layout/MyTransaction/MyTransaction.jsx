@@ -12,7 +12,11 @@ const MyTransaction = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      fetch(`http://localhost:5000/myTransaction?email=${user.email}`)
+      fetch(`http://localhost:5000/myTransaction?email=${user.email}`, {
+        headers: {
+          authorization: `Bearer ${user?.accessToken}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -28,7 +32,7 @@ const MyTransaction = () => {
   }
 
   return (
-    <div className="w-6/10 mx-auto min-h-screen">
+    <div className=" w-8/10 md:w-6/10 mx-auto min-h-screen">
       {myTransaction.length === 0 ? (
         <div className="flex flex-col justify-center items-center">
           <img
@@ -39,7 +43,10 @@ const MyTransaction = () => {
           <p className="w-70 mb-3 text-center font-semibold text-[17px]">
             You don't have any transactions yet. Create one now!
           </p>
-          <Link to="/addTransaction" className="my-button basic-btn">
+          <Link
+            to="/addTransaction"
+            className="my-button text-white rounded-md font-bold cursor-pointer py-1.5 px-7"
+          >
             Add Transaction
           </Link>
         </div>
@@ -48,7 +55,7 @@ const MyTransaction = () => {
           <h1 className="text-2xl text-[#7c3aed] title-font my-5 text-start">
             My Transaction
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 ">
             {myTransaction.map((card) => (
               <Transaction
                 myTransaction={myTransaction}

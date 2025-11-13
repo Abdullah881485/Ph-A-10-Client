@@ -88,7 +88,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="my-button basic-btn mt-2 transition duration-300 w-full"
+              className="my-button text-white rounded-md font-bold cursor-pointer py-1.5 px-7 mt-2 transition duration-300 w-full"
             >
               Login
             </button>

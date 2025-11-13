@@ -1,4 +1,5 @@
 import React from "react";
+import { IoArrowBackCircle } from "react-icons/io5";
 import { Link } from "react-router";
 
 const Error = () => {
@@ -11,9 +12,11 @@ const Error = () => {
       <Link
         to="/"
         type="button"
-        className="py-2 rounded-md cursor-pointer font-bold text-gray-200 my-button mt-2 transition duration-200  px-20"
+        className="py-2 rounded-md cursor-pointer font-bold text-gray-200 my-button mt-2 transition duration-200 px-10  md:px-20"
       >
-        Back to homepage
+        <p className="flex items-center gap-2 ">
+          <IoArrowBackCircle /> Back To Home
+        </p>
       </Link>
     </div>
   );

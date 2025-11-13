@@ -65,14 +65,14 @@ const AddTransaction = () => {
         console.error("Error adding transaction:", error);
         setLoading(false);
       });
-    if (loading) {
-      return <Loader></Loader>;
-    }
 
     // console.log({ type, category, amount, description, date, email, name });
   };
+  if (loading) {
+    return <Loader></Loader>;
+  }
   return (
-    <div className="w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10 text-gray-200">
+    <div className="w-[95%] md:w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10 text-gray-200">
       <h1 className="text-2xl font-bold mb-4 text-[#7c3aed]">
         Add Transaction
       </h1>
@@ -84,10 +84,11 @@ const AddTransaction = () => {
               name="type"
               required
               id="type"
-              defaultValue="Income"
+              defaultValue="Pick a type"
               onChange={handleType}
-              className="input border p-2 rounded  bg-[#0b1422] text-white"
+              className="select input border p-2 rounded  bg-[#0b1422] text-white"
             >
+              <option disabled={true}>Pick a type</option>
               <option>Income</option>
               <option>Expense</option>
             </select>
@@ -98,10 +99,11 @@ const AddTransaction = () => {
             <select
               name="category"
               required
+              defaultValue="Pick a category"
               id="category"
-              defaultValue="Salary"
-              className="input border p-2 rounded bg-[#0b1422] text-white"
+              className="input select border p-2 rounded bg-[#0b1422] text-white"
             >
+              <option disabled={true}>Pick a category</option>
               {type === "Expense"
                 ? expense.map((cat, index) => (
                     <option key={index}>{cat}</option>
@@ -112,7 +114,7 @@ const AddTransaction = () => {
             </select>
           </div>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-1 md:gap-6">
           <div className="flex flex-col w-full gap-2 mb-4">
             <label htmlFor="amount">Amount</label>
             <input
@@ -171,18 +173,18 @@ const AddTransaction = () => {
           />
         </div>
 
-        <div className="flex items-center justify-between mt-2">
+        <div className="flex items-center justify-center md:justify-between gap-5 mt-2">
           <button
             type="reset"
-            className="py-1.5 hover-glow px-20 text-[#7c3aed] rounded-sm font-bold cursor-pointer border border-gray-700 "
+            className=" rounded-md text-xs md:text-sm font-bold cursor-pointer py-2.5 md:py-1.5 px-1 md:px-12 hover-glow  text-[#7c3aed]  border border-gray-700 w-full sm:w-auto"
           >
             Reset
           </button>
           <button
             type="submit"
-            className="my-button basic-btn transition-all duration-200 "
+            className="my-button text-xs md:text-sm text-white rounded-md font-bold cursor-pointer py-2.5 md:py-1.5 px-1 md:px-7 transition-all duration-200 w-full sm:w-auto"
           >
-            Add Trsansaction
+            Add Transaction
           </button>
         </div>
       </form>

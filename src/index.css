@@ -8,14 +8,6 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-.basic-btn {
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 6px 30px;
-  font-weight: bold;
-  color: white;
-}
 .my-button {
   position: relative;
   display: inline-block;

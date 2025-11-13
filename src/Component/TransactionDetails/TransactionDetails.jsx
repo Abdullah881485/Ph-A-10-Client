@@ -19,9 +19,9 @@ const TransactionDetails = () => {
   //   console.log(transaction);
 
   return (
-    <div className=" flex items-center justify-center bg-base-200 px-4 py-30 text-gray-200">
-      <div className=" bg-[#0b1422] shadow-2xl rounded-2xl p-8 w-full max-w-md transition-all duration-300">
-        <h1 className="text-3xl font-extrabold text-center mb-6 title-font">
+    <div className=" flex items-center justify-center bg-base-200 py-30 text-gray-200">
+      <div className=" bg-[#0b1422] shadow-2xl rounded-2xl p-8 w-9/10 md:w-6/10 lg:w-5/10 transition-all duration-300">
+        <h1 className="text-3xl text-[#7c3aed] font-extrabold text-center mb-6 title-font">
           Transaction Details
         </h1>
 
@@ -59,7 +59,7 @@ const TransactionDetails = () => {
         </div>
         <div>
           <Link
-            className=" basic-btn my-button text-center rounded-sm border border-gray-800 mt-4 transition duration-200 self-start "
+            className=" my-button mt-3 text-sm text-white rounded-md font-bold cursor-pointer py-2.5 md:py-1.5 px-5 md:px-7 transition-all duration-200 "
             to="/myTransaction"
           >
             <p className="flex items-center gap-2 ">

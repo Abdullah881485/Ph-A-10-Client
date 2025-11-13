@@ -22,11 +22,11 @@ const MyProfile = () => {
   return (
     <div>
       <title>FinEase | My Profile</title>
-      <div className=" w-[90%] md:w-[50%] mx-auto my-20 bg-[#0b1422] p-10 rounded-2xl text-gray-200">
+      <div className=" w-[90%] md:w-[60%] lg:w-[50%] mx-auto my-20 bg-[#0b1422] p-8 md:p-10 rounded-2xl text-gray-200">
         <h1 className="mb-5 text-2xl font-bold text-[#7c3aed]">My Profile</h1>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 md:gap-5">
           <img
-            className=" w-15 md:w-18 rounded-full"
+            className=" w-12 md:w-18 rounded-full"
             src={`${
               user.photoURL
                 ? user.photoURL
@@ -62,7 +62,7 @@ const MyProfile = () => {
 
             <button
               type="submit"
-              className=" w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 my-button basic-btn self-start mt-5"
+              className=" w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 my-button mt-5 text-xs md:text-sm text-white rounded-md font-bold cursor-pointer py-2.5 px-2 md:px-7 transition-all duration-200 "
             >
               Update Profile
             </button>

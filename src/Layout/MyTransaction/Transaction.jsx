@@ -201,7 +201,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                 </button>
                 <button
                   type="submit"
-                  className="basic-btn my-button mt-2 transition duration-200 self-start btn px-10"
+                  className="text-white rounded-md font-bold cursor-pointer py-1.5 px-7 my-button mt-2 transition duration-200 self-start btn px-10"
                 >
                   Update
                 </button>
