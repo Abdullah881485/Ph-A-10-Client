@@ -1,6 +1,6 @@
 # FinEase - Personal Finance Management Web Application
 
-**Live Site:** [Add your deployed URL here - e.g., https://finease.netlify.app](https://finease.netlify.app)
+**Live Site:** https://finease-72caa.web.app
 
 ## 📱 Overview
 
