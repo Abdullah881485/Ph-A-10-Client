@@ -136,7 +136,7 @@ const AddTransaction = () => {
               name="date"
               type="date"
               id="date"
-              className="input border p-2 rounded  bg-[#0b1422] text-white"
+              className="input border p-2 rounded  bg-[#0b1422] dark:text-white"
               required
               min="2025-01-01"
               max="2026-12-31"

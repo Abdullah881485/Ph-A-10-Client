@@ -180,7 +180,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                   name="date"
                   type="date"
                   id="date"
-                  className="input border p-2 rounded w-full bg-[#0b1422] text-white"
+                  className="input border p-2 rounded w-full bg-[#0b1422] dark:text-white"
                   min="2025-01-01"
                   max="2026-12-31"
                   defaultValue={format(new Date(card.date), "yyyy-MM-dd")}
