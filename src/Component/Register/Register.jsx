@@ -98,7 +98,7 @@ const Register = () => {
       .finally(() => setLoading(false));
   };
   return (
-    <div className="w-4/5 md:w-4/5 lg:w-3/5 xl:3/6 mx-auto text-gray-200 ">
+    <div className="w-[90%] md:w-4/5 lg:w-3/5 xl:3/6 mx-auto text-gray-200 ">
       <title>FinEase | Register</title>
       <div className="rounded-2xl shadow bg-[#0b1422] my-20 flex flex-col md:flex-row items-stretch overflow-hidden">
         <div className="hidden md:block md:w-1/2">
@@ -109,7 +109,7 @@ const Register = () => {
           />
         </div>
         <div className="p-8 md:w-1/2 flex flex-col justify-center">
-          <h1 className="text-2xl font-bold mb-10 text-center">
+          <h1 className="text-2xl font-bold mb-10 text-center text-[#7c3aed]">
             Create An Account
           </h1>
           <form onSubmit={handleCreateUser}>
@@ -119,7 +119,7 @@ const Register = () => {
                 required
                 name="name"
                 type="text"
-                className="input w-full bg-transparent"
+                className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]"
               />
             </div>
             <div className="flex flex-col gap-2 mb-4">
@@ -128,7 +128,7 @@ const Register = () => {
                 required
                 name="email"
                 type="email"
-                className="input w-full bg-transparent"
+                className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]"
               />
             </div>
             <div className="flex flex-col gap-2 mb-4">
@@ -137,7 +137,7 @@ const Register = () => {
                 required
                 name="photo"
                 type="text"
-                className="input w-full bg-transparent"
+                className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]"
               />
             </div>
             <div className="flex flex-col gap-2 mb-4">
@@ -146,7 +146,7 @@ const Register = () => {
                 required
                 name="password"
                 type="password"
-                className="input w-full bg-transparent"
+                className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]"
               />
             </div>
 

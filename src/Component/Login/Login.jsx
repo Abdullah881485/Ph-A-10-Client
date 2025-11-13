@@ -52,7 +52,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="w-4/5 md:w-4/5 lg:w-3/5 xl:3/6 mx-auto text-gray-200">
+    <div className="w-[90%] md:w-4/5 lg:w-3/5 xl:3/6 mx-auto text-gray-200">
       <title>FinEase | Login</title>
       <div className="rounded-2xl shadow-lg bg-[#0b1422] my-20 flex flex-col md:flex-row items-stretch overflow-hidden">
         <div className="hidden md:block md:w-1/2">
@@ -74,7 +74,7 @@ const Login = () => {
                 required
                 name="email"
                 type="email"
-                className="input w-full bg-transparent border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:border-[#7c3aed]"
+                className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]  "
               />
             </div>
             <div className="flex flex-col gap-2 mb-4">
@@ -83,7 +83,7 @@ const Login = () => {
                 required
                 name="password"
                 type="password"
-                className="input w-full bg-transparent border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:border-[#7c3aed]"
+                className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]"
               />
             </div>
 

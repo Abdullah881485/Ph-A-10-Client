@@ -28,6 +28,9 @@ const Home = () => {
         })
         .finally(() => setLoading(false));
     }
+    else{
+      setLoading(false);
+    }
   }, [user, axiosInstance]);
   if (loading) {
     return <Loader></Loader>;
@@ -78,7 +81,7 @@ const Home = () => {
                     : "text-gray-400"
                 }`}
               >
-                $ {balance}
+                $ {balance ? balance : 0}
               </p>
             </div>
             <p
@@ -99,7 +102,9 @@ const Home = () => {
               <h2 className="text-sm font-semibold text-gray-400">
                 Total Income
               </h2>
-              <p className="text-xl md:text-2xl font-bold text-green-400 mt-1">{`$ ${income}`}</p>
+              <p className="text-xl md:text-2xl font-bold text-green-400 mt-1">{`$ ${
+                income ? income : 0
+              }`}</p>
             </div>
             <IoTrendingUpSharp className="text-green-500 " size={50} />
           </div>
@@ -109,7 +114,9 @@ const Home = () => {
               <h2 className="text-sm font-semibold text-gray-400">
                 Total Expense
               </h2>
-              <p className=" text-xl md:text-2xl font-bold text-red-500 mt-1">{`$ ${expense}`}</p>
+              <p className=" text-xl md:text-2xl font-bold text-red-500 mt-1">{`$ ${
+                expense ? expense : 0
+              }`}</p>
             </div>
             <IoMdTrendingDown className="text-red-500 " size={50} />
           </div>
