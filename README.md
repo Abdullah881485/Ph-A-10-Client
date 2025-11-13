@@ -48,18 +48,6 @@ FinEase is a comprehensive personal finance management web application that empo
 4. Start dev server: `npm run dev`
 5. Build for production: `npm run build`
 
-## 📂 Project Structure
-
-```
-src/
-├── Component/           # Reusable UI components
-├── Layout/             # Page layouts and sections
-├── Provider/           # Authentication context
-├── Router/             # Route definitions
-├── Firebase/           # Firebase configuration
-└── assets/             # Static files
-```
-
 ## 🔒 Security Features
 
 - Firebase Authentication with email/password and OAuth
