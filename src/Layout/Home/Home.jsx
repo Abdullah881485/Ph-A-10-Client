@@ -5,6 +5,7 @@ import { IoTrendingUpSharp } from "react-icons/io5";
 import { IoMdTrendingDown } from "react-icons/io";
 import Loader from "../../Component/Loader/Loader";
 import { BiBarChart } from "react-icons/bi";
+import axios from "axios";
 
 const Home = () => {
   const { user } = use(AuthContext);
@@ -13,14 +14,15 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      fetch(`http://localhost:5000/myTransaction?email=${user.email}`, {
-        headers: {
-          authorization: `Bearer ${user?.accessToken}`,
-        },
-      })
-        .then((res) => res.json())
+      axios
+        .get(`http://localhost:5000/myTransaction?email=${user.email}`, {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+          },
+        })
+
         .then((data) => {
-          setMoney(data);
+          setMoney(data.data);
         })
         .finally(() => setLoading(false));
     }

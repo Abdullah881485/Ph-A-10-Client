@@ -3,6 +3,7 @@ import Transaction from "./Transaction";
 import { AuthContext } from "../../Provider/AuthContext";
 import { Link } from "react-router";
 import Loader from "../../Component/Loader/Loader";
+import axios from "axios";
 
 const MyTransaction = () => {
   const { user } = use(AuthContext);
@@ -12,15 +13,16 @@ const MyTransaction = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      fetch(`http://localhost:5000/myTransaction?email=${user.email}`, {
-        headers: {
-          authorization: `Bearer ${user?.accessToken}`,
-        },
-      })
-        .then((res) => res.json())
+      axios
+        .get(`http://localhost:5000/myTransaction?email=${user.email}`, {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+          },
+        })
+
         .then((data) => {
           console.log(data);
-          setMyTransaction(data);
+          setMyTransaction(data.data);
         })
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));

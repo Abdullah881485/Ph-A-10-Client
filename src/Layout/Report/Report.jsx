@@ -14,6 +14,7 @@ import {
   Line,
 } from "recharts";
 import Loader from "../../Component/Loader/Loader";
+import axios from "axios";
 
 const COLORS = [
   "#22c55e",
@@ -49,13 +50,14 @@ const Report = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      fetch(`http://localhost:5000/myTransaction?email=${user.email}`, {
-        headers: {
-          authorization: `Bearer ${user?.accessToken || ""} `,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => setReport(data))
+      axios
+        .get(`http://localhost:5000/myTransaction?email=${user.email}`, {
+          headers: {
+            authorization: `Bearer ${user?.accessToken || ""} `,
+          },
+        })
+
+        .then((data) => setReport(data.data))
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     }

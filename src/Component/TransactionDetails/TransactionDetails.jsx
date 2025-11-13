@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { Link, useLoaderData } from "react-router";
@@ -7,13 +8,14 @@ const TransactionDetails = () => {
   const [categoryData, setCategoryData] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `http://localhost:5000/myTransaction/${transaction.category}?email=${transaction.email}`
-    )
-      .then((res) => res.json())
+    axios
+      .get(
+        `http://localhost:5000/myTransaction/${transaction.category}?email=${transaction.email}`
+      )
+
       .then((data) => {
-        console.log(data);
-        setCategoryData(data);
+        console.log(data.data);
+        setCategoryData(data.data);
       });
   }, [transaction]);
   //   console.log(transaction);
