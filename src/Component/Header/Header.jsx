@@ -187,10 +187,10 @@ const Header = () => {
                         {user.displayName ? user.displayName : "Anonymous"}
                       </h1>
                       <p className="text-xs font-semibold">{user.email}</p>
-                      <div className="pt-2 border-t-2 border-gray-800">
+                      <div className="pt-2  border-t-2 border-gray-800">
                         <Link
                           to="/myProfile"
-                          className=" text-white rounded-md font-bold cursor-pointer py-1.5 px-7 btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 hover:text-gray-200 w-full mt-2 "
+                          className=" text-white rounded-md font-bold cursor-pointer py-1.5 hover-glow btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 hover:text-gray-200 w-full mt-2 "
                         >
                           <RiAccountCircle2Fill size={20} />
                           Profile

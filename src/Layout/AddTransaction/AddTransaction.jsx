@@ -1,12 +1,14 @@
 import React, { use, useState } from "react";
 
 import { AuthContext } from "../../Provider/AuthContext";
-import axios from "axios";
+
 import Swal from "sweetalert2";
 import { format } from "date-fns";
 import Loader from "../../Component/Loader/Loader";
+import useAxios from "../../Component/Hook/useAxios";
 
 const AddTransaction = () => {
+  const axiosInstance = useAxios();
   const [loading, setLoading] = useState(false);
   const { user } = use(AuthContext);
   const [type, setType] = useState("");
@@ -46,8 +48,8 @@ const AddTransaction = () => {
       email,
       name,
     };
-    axios
-      .post("http://localhost:5000/myTransaction", newTransaction)
+    axiosInstance
+      .post("/myTransaction", newTransaction)
       .then((data) => {
         console.log(data.data);
         if (data.data) {
@@ -73,6 +75,7 @@ const AddTransaction = () => {
   }
   return (
     <div className="w-[95%] md:w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10 text-gray-200">
+      <title>FinEase | Add Transaction</title>
       <h1 className="text-2xl font-bold mb-4 text-[#7c3aed]">
         Add Transaction
       </h1>

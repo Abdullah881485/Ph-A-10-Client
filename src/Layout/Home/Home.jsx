@@ -5,17 +5,19 @@ import { IoTrendingUpSharp } from "react-icons/io5";
 import { IoMdTrendingDown } from "react-icons/io";
 import Loader from "../../Component/Loader/Loader";
 import { BiBarChart } from "react-icons/bi";
-import axios from "axios";
+
+import useAxios from "../../Component/Hook/useAxios";
 
 const Home = () => {
+  const axiosInstance = useAxios();
   const { user } = use(AuthContext);
   const [money, setMoney] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      axios
-        .get(`http://localhost:5000/myTransaction?email=${user.email}`, {
+      axiosInstance
+        .get(`/myTransaction?email=${user.email}`, {
           headers: {
             authorization: `Bearer ${user?.accessToken}`,
           },
@@ -26,7 +28,7 @@ const Home = () => {
         })
         .finally(() => setLoading(false));
     }
-  }, [user]);
+  }, [user, axiosInstance]);
   if (loading) {
     return <Loader></Loader>;
   }
@@ -41,6 +43,7 @@ const Home = () => {
   console.log(income, expense, balance);
   return (
     <div>
+      <title>FinEase | Home</title>
       <div className=" my-0 md:my-5  text-white space-y-5">
         <div className="flex flex-col lg:flex-row justify-between w-full md:w-8/10 mx-auto items-center bg-[#0b1422] p-6 md:p-8 rounded-none md:rounded-xl shadow-lg gap-4">
           <div className="text-center lg:text-left space-y-2">

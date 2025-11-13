@@ -14,7 +14,7 @@ import {
   Line,
 } from "recharts";
 import Loader from "../../Component/Loader/Loader";
-import axios from "axios";
+import useAxios from "../../Component/Hook/useAxios";
 
 const COLORS = [
   "#22c55e",
@@ -29,6 +29,7 @@ const COLORS = [
 ];
 
 const Report = () => {
+  const axiosInstance = useAxios();
   const { user } = useContext(AuthContext);
   const [report, setReport] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -50,8 +51,8 @@ const Report = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      axios
-        .get(`http://localhost:5000/myTransaction?email=${user.email}`, {
+      axiosInstance
+        .get(`/myTransaction?email=${user.email}`, {
           headers: {
             authorization: `Bearer ${user?.accessToken || ""} `,
           },
@@ -61,7 +62,7 @@ const Report = () => {
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     }
-  }, [user]);
+  }, [user, axiosInstance]);
 
   const data = report.map((t, index) => ({
     name: `Txn ${index + 1}`,
@@ -90,6 +91,7 @@ const Report = () => {
   }
   return (
     <div className=" w-9/10 md:w-8/10 mx-auto  py-8   min-h-screen">
+      <title>FinEase | Financial Report</title>
       <h1 className="text-3xl font-bold  mb-8  text-[#7c3aed] ">
         Financial Report
       </h1>

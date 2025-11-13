@@ -53,6 +53,7 @@ const Login = () => {
   };
   return (
     <div className="w-4/5 md:w-4/5 lg:w-3/5 xl:3/6 mx-auto text-gray-200">
+      <title>FinEase | Login</title>
       <div className="rounded-2xl shadow-lg bg-[#0b1422] my-20 flex flex-col md:flex-row items-stretch overflow-hidden">
         <div className="hidden md:block md:w-1/2">
           <img

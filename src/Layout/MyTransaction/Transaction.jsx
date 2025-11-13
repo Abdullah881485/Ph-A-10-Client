@@ -1,10 +1,11 @@
-import axios from "axios";
 import { format } from "date-fns";
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import useAxios from "../../Component/Hook/useAxios";
 
 const Transaction = ({ card, setMyTransaction, myTransaction }) => {
+  const axiosInstance = useAxios();
   const navigate = useNavigate();
   const [type, setType] = useState("");
   const income = ["Salary", "Business", "Investment", "Other"];
@@ -39,11 +40,8 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
       description,
       date,
     };
-    axios
-      .patch(
-        `http://localhost:5000/updateTransaction/${card._id}`,
-        updateTransaction
-      )
+    axiosInstance
+      .patch(`/updateTransaction/${card._id}`, updateTransaction)
       .then((data) => {
         console.log(data.data);
         Swal.fire({
@@ -69,21 +67,19 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:5000/myTransaction/${id}`)
-          .then((data) => {
-            // console.log(data);
-            if (data.data.deletedCount) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your transaction has been deleted.",
-                icon: "success",
-              });
+        axiosInstance.delete(`/myTransaction/${id}`).then((data) => {
+          // console.log(data);
+          if (data.data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your transaction has been deleted.",
+              icon: "success",
+            });
 
-              const remaining = myTransaction.filter((card) => card._id !== id);
-              setMyTransaction(remaining);
-            }
-          });
+            const remaining = myTransaction.filter((card) => card._id !== id);
+            setMyTransaction(remaining);
+          }
+        });
       }
     });
   };

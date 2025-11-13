@@ -48,7 +48,9 @@ const Router = createBrowserRouter([
         path: "/transactionDetails/:id",
         hydrateFallbackElement: <Loader></Loader>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/transactionDetails/${params.id}`),
+          fetch(
+            `https://ph-a-10-server.vercel.app/transactionDetails/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <TransactionDetails></TransactionDetails>

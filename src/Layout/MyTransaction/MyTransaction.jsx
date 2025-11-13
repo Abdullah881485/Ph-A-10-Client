@@ -3,9 +3,11 @@ import Transaction from "./Transaction";
 import { AuthContext } from "../../Provider/AuthContext";
 import { Link } from "react-router";
 import Loader from "../../Component/Loader/Loader";
-import axios from "axios";
+
+import useAxios from "../../Component/Hook/useAxios";
 
 const MyTransaction = () => {
+  const axiosInstance = useAxios();
   const { user } = use(AuthContext);
   const [myTransaction, setMyTransaction] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,8 +15,8 @@ const MyTransaction = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      axios
-        .get(`http://localhost:5000/myTransaction?email=${user.email}`, {
+      axiosInstance
+        .get(`/myTransaction?email=${user.email}`, {
           headers: {
             authorization: `Bearer ${user?.accessToken}`,
           },
@@ -27,7 +29,7 @@ const MyTransaction = () => {
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     }
-  }, [user]);
+  }, [user, axiosInstance]);
   console.log(myTransaction);
   if (loading) {
     return <Loader></Loader>;
@@ -35,6 +37,7 @@ const MyTransaction = () => {
 
   return (
     <div className=" w-8/10 md:w-6/10 mx-auto min-h-screen">
+      <title>FinEase | My Transaction</title>
       {myTransaction.length === 0 ? (
         <div className="flex flex-col justify-center items-center">
           <img

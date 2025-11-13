@@ -1,27 +1,27 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { Link, useLoaderData } from "react-router";
+import useAxios from "../Hook/useAxios";
 
 const TransactionDetails = () => {
+  const axiosInstance = useAxios();
   const transaction = useLoaderData();
   const [categoryData, setCategoryData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:5000/myTransaction/${transaction.category}?email=${transaction.email}`
-      )
+    axiosInstance
+      .get(`/myTransaction/${transaction.category}?email=${transaction.email}`)
 
       .then((data) => {
         console.log(data.data);
         setCategoryData(data.data);
       });
-  }, [transaction]);
+  }, [transaction, axiosInstance]);
   //   console.log(transaction);
 
   return (
     <div className=" flex items-center justify-center bg-base-200 py-30 text-gray-200">
+      <title>FinEase | Transaction Details</title>
       <div className=" bg-[#0b1422] shadow-2xl rounded-2xl p-8 w-9/10 md:w-6/10 lg:w-5/10 transition-all duration-300">
         <h1 className="text-3xl text-[#7c3aed] font-extrabold text-center mb-6 title-font">
           Transaction Details

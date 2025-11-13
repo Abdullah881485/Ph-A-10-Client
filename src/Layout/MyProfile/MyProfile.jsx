@@ -48,6 +48,7 @@ const MyProfile = () => {
             <input
               name="name"
               type="text"
+              defaultValue={user.displayName}
               className="input w-full placeholder:text-sm md:placeholder:text-[15px] bg-[#0b1422]"
               placeholder="Enter Your Name"
             />
