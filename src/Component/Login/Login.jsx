@@ -15,7 +15,7 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           title: "",
           text: "You logged in Successfully",
@@ -38,6 +38,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
+        const _user = result.user;
         Swal.fire({
           title: "",
           text: "You logged in Successfully",
@@ -45,7 +46,7 @@ const Login = () => {
           confirmButtonText: "Close",
         });
         navigate(`${location.state ? location.state : "/"}`);
-        console.log(result);
+        // console.log(result);
       })
       .catch((error) => {
         console.log(error);

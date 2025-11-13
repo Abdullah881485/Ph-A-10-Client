@@ -43,7 +43,7 @@ const Home = () => {
     .reduce((sum, rep) => sum + Number(rep.amount), 0);
 
   const balance = income - expense;
-  console.log(income, expense, balance);
+  // console.log(income, expense, balance);
   return (
     <div>
       <title>FinEase | Home</title>

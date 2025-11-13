@@ -6,7 +6,7 @@ import { RiAccountCircle2Fill } from "react-icons/ri";
 
 const Header = () => {
   const { user, signOutUser } = use(AuthContext);
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
 
   const [theme, setTheme] = useState(

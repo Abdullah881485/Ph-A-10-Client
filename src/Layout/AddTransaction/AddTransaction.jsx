@@ -51,7 +51,7 @@ const AddTransaction = () => {
     axiosInstance
       .post("/myTransaction", newTransaction)
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         if (data.data) {
           Swal.fire({
             title: "",

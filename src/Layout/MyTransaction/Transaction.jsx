@@ -32,7 +32,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
     const amount = form.amount.value;
     const description = form.description.value;
     const date = form.date.value;
-    console.log(type, category, amount, description, date);
+    // console.log(type, category, amount, description, date);
     const updateTransaction = {
       type,
       category,
@@ -43,7 +43,8 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
     axiosInstance
       .patch(`/updateTransaction/${card._id}`, updateTransaction)
       .then((data) => {
-        console.log(data.data);
+        const _data = data.data;
+        // console.log(data.data);
         Swal.fire({
           title: "",
           text: "Your transaction updated Successfully",
@@ -197,7 +198,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                 </button>
                 <button
                   type="submit"
-                  className="text-white rounded-md font-bold cursor-pointer py-1.5 px-7 my-button mt-2 transition duration-200 self-start btn px-10"
+                  className="text-white rounded-md font-bold cursor-pointer py-1.5  my-button mt-2 transition duration-200 self-start btn px-10"
                 >
                   Update
                 </button>

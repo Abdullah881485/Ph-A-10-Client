@@ -17,8 +17,6 @@ FinEase is a comprehensive personal finance management web application that empo
 
 ## 🛠 Technology Stack
 
-### Frontend
-
 - **React 19.2** - UI library
 - **Vite 7.2** - Build tool and dev server
 - **Tailwind CSS 4.1** - Utility-first CSS framework
@@ -27,11 +25,6 @@ FinEase is a comprehensive personal finance management web application that empo
 - **Recharts 3.4** - Data visualization library
 - **Firebase 12.5** - Authentication service
 - **SweetAlert2 11.26** - Beautiful modal alerts
-
-### Backend
-
-- **Node.js + Express** - Server runtime
-- **MongoDB** - Database
 
 
 ## 🔒 Security Features

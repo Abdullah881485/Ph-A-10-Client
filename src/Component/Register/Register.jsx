@@ -62,7 +62,7 @@ const Register = () => {
           confirmButtonText: "Close",
         });
 
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((err) => {
         console.log(err);
@@ -75,7 +75,7 @@ const Register = () => {
       })
       .finally(() => setLoading(false));
 
-    console.log({ name, email, photo, password });
+    // console.log({ name, email, photo, password });
   };
   const handleGoogleSignIn = () => {
     setLoading(true);
@@ -88,7 +88,7 @@ const Register = () => {
           confirmButtonText: "Close",
         });
         const user = result.user;
-        console.log(result);
+        // console.log(result);
         setUser(user);
         navigate("/");
       })

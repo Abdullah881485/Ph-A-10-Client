@@ -13,7 +13,7 @@ const TransactionDetails = () => {
       .get(`/myTransaction/${transaction.category}?email=${transaction.email}`)
 
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         setCategoryData(data.data);
       });
   }, [transaction, axiosInstance]);

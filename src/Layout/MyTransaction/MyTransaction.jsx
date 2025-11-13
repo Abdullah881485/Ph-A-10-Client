@@ -23,14 +23,14 @@ const MyTransaction = () => {
         })
 
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setMyTransaction(data.data);
         })
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     }
   }, [user, axiosInstance]);
-  console.log(myTransaction);
+  // console.log(myTransaction);
   if (loading) {
     return <Loader></Loader>;
   }
