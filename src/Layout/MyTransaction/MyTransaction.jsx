@@ -36,7 +36,7 @@ const MyTransaction = () => {
   }
 
   return (
-    <div className=" w-8/10 md:w-6/10 mx-auto min-h-screen">
+    <div className=" w-8/10 md:w-6/10 mx-auto my-10">
       <title>FinEase | My Transaction</title>
       {myTransaction.length === 0 ? (
         <div className="flex flex-col justify-center items-center">
@@ -56,7 +56,7 @@ const MyTransaction = () => {
           </Link>
         </div>
       ) : (
-        <div>
+        <div className="mb-10 lg:mb-50">
           <h1 className="text-2xl text-[#7c3aed] title-font my-5 text-start">
             My Transaction
           </h1>
