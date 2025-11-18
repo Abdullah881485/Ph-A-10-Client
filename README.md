@@ -41,15 +41,20 @@ FinEase is a comprehensive personal finance management web application that empo
 1. Clone the repository:  
    ```bash
    git clone https://github.com/Abdullah881485/Ph-A-10-Client.git
- 2.  cd Ph-A-10-Client
- 3.  npm install
- 4.   VITE_FIREBASE_API_KEY=your_api_key
+ 2.  ```bash
+     cd Ph-A-10-Client
+ 3.  ```bash
+      npm install
+ 4.  ```bash
+       VITE_FIREBASE_API_KEY=your_api_key
       VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
       VITE_FIREBASE_PROJECT_ID=your_project_id
       VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
       VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
       VITE_FIREBASE_APP_ID=your_app_id
-5.   npm run dev
-6.   http://localhost:5173
+5.  ```bash
+     npm run dev
+6. ```bash
+     http://localhost:5173
    
 
