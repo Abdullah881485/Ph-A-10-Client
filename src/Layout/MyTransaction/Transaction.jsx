@@ -51,7 +51,9 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
           icon: "success",
           confirmButtonText: "Close",
         });
-        navigate(`/transactionDetails/${card._id}`, { replace: true });
+        navigate(`/dashboard-layout/transactionDetails/${card._id}`, {
+          replace: true,
+        });
       });
 
     updateModalRef.current.close();
@@ -85,7 +87,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
     });
   };
   return (
-    <div className="bg-[#0b1422] text-white rounded-2xl border border-gray-800 shadow-md hover:shadow-xl hover-glow transition-all duration-300 p-5 flex flex-col justify-between">
+    <div className="bg-base-300 text-base-content rounded-2xl border border-base-300 shadow-md hover:shadow-xl hover-glow transition-all duration-300 p-5 flex flex-col justify-between">
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-bold tracking-wide">{card.type}</h2>
         <span className="px-2 py-1 text-xs font-semibold rounded-full bg-green-600/20 text-green-400 border border-green-600/30">
@@ -95,12 +97,12 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
 
       <div className="space-y-1 text-sm">
         <p className="flex justify-between">
-          <span className="text-gray-400">Amount:</span>
+          <span className="text-base-500">Amount:</span>
           <span className="text-green-400 font-semibold">${card.amount}</span>
         </p>
         <p className="flex justify-between">
-          <span className="text-gray-400">Date:</span>
-          <span className="text-gray-300">{card.date}</span>
+          <span className="text-base-500">Date:</span>
+          <span className="text-base-400">{card.date}</span>
         </p>
       </div>
 
@@ -116,7 +118,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
           ref={updateModalRef}
           className="modal modal-bottom sm:modal-middle"
         >
-          <div className="modal-box bg-[#0b1422] text-gray-200">
+          <div className="modal-box bg-base-300 text-base-400">
             <form method="dialog" onSubmit={handleUpdateTransaction}>
               <div className="flex items-center gap-6">
                 <div className="flex flex-col w-full gap-2 mb-4">
@@ -126,7 +128,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                     id="type"
                     defaultValue={card.type}
                     onChange={handleType}
-                    className="input border p-2 rounded  bg-[#0b1422] text-white"
+                    className="input border p-2 rounded  bg-base-300 text-base-content"
                   >
                     <option>Income</option>
                     <option>Expense</option>
@@ -139,7 +141,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                     name="category"
                     id="category"
                     defaultValue={card.category}
-                    className="input border p-2 rounded  bg-[#0b1422] text-white"
+                    className="input border p-2 rounded  bg-base-300 text-base-content"
                   >
                     {type === "Expense"
                       ? expense.map((cat, index) => (
@@ -159,7 +161,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                   id="amount"
                   defaultValue={card.amount}
                   type="number"
-                  className="input border p-2 rounded w-full bg-[#0b1422] text-white"
+                  className="input border p-2 rounded w-full bg-base-300 text-base-content"
                   min="1"
                   max="1000000000000000000000000000"
                 />
@@ -171,7 +173,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                   name="description"
                   defaultValue={card.description}
                   id="description"
-                  className="textarea border p-2 rounded w-full bg-[#0b1422] text-white"
+                  className="textarea border p-2 rounded w-full bg-base-300 text-base-content"
                 />
               </div>
 
@@ -181,7 +183,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
                   name="date"
                   type="date"
                   id="date"
-                  className="input border p-2 rounded w-full bg-[#0b1422] dark:text-white"
+                  className="input border p-2 rounded w-full bg-base-300 dark:text-base-content"
                   min="2025-01-01"
                   max="2026-12-31"
                   defaultValue={format(new Date(card.date), "yyyy-MM-dd")}
@@ -213,7 +215,7 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
           Delete
         </button>
         <Link
-          to={`/transactionDetails/${card._id}`}
+          to={`/dashboard-layout/transactionDetails/${card._id}`}
           className="flex-1 btn btn-sm bg-gray-700 text-white font-semibold border-none hover:bg-gray-600"
         >
           Details

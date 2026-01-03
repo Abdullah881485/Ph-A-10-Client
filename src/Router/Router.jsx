@@ -14,6 +14,9 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import TransactionDetails from "../Component/TransactionDetails/TransactionDetails";
 import Policy from "../Layout/Policy";
 import Terms from "../Layout/Terms";
+import Contact from "../Layout/Contact/Contact";
+import About from "../Layout/About/About";
+import Dashboard from "../Layout/Dashboard-Layout/Dashboard";
 
 const Router = createBrowserRouter([
   {
@@ -36,46 +39,6 @@ const Router = createBrowserRouter([
         ),
       },
       {
-        path: "/myTransaction",
-        hydrateFallbackElement: <Loader></Loader>,
-        element: (
-          <PrivateRoute>
-            <MyTransaction></MyTransaction>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/transactionDetails/:id",
-        hydrateFallbackElement: <Loader></Loader>,
-        loader: ({ params }) =>
-          fetch(
-            `https://ph-a-10-server.vercel.app/transactionDetails/${params.id}`
-          ),
-        element: (
-          <PrivateRoute>
-            <TransactionDetails></TransactionDetails>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/reports",
-        hydrateFallbackElement: <Loader></Loader>,
-        element: (
-          <PrivateRoute>
-            <Report></Report>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/myProfile",
-        hydrateFallbackElement: <Loader></Loader>,
-        element: (
-          <PrivateRoute>
-            <MyProfile></MyProfile>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/login",
         hydrateFallbackElement: <Loader></Loader>,
         Component: Login,
@@ -91,9 +54,67 @@ const Router = createBrowserRouter([
         Component: Policy,
       },
       {
+        path: "/about",
+        hydrateFallbackElement: <Loader></Loader>,
+        Component: About,
+      },
+      {
+        path: "/contact",
+        hydrateFallbackElement: <Loader></Loader>,
+        Component: Contact,
+      },
+      {
         path: "/terms",
         hydrateFallbackElement: <Loader></Loader>,
         Component: Terms,
+      },
+    ],
+  },
+  {
+    path: "/dashboard-layout",
+    hydrateFallbackElement: <Loader></Loader>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard-layout",
+        index: true,
+        element: <MyTransaction></MyTransaction>,
+      },
+      {
+        path: "myTransaction",
+        hydrateFallbackElement: <Loader></Loader>,
+        element: <MyTransaction></MyTransaction>,
+      },
+      {
+        path: "transactionDetails/:id",
+        hydrateFallbackElement: <Loader></Loader>,
+        loader: ({ params }) =>
+          fetch(
+            `https://ph-a-10-server.vercel.app/transactionDetails/${params.id}`
+          ),
+        element: <TransactionDetails></TransactionDetails>,
+      },
+      {
+        path: "reports",
+        hydrateFallbackElement: <Loader></Loader>,
+        element: (
+          <PrivateRoute>
+            <Report></Report>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myProfile",
+        hydrateFallbackElement: <Loader></Loader>,
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
       },
     ],
   },

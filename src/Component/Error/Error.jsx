@@ -12,7 +12,7 @@ const Error = () => {
       <Link
         to="/"
         type="button"
-        className="py-2 rounded-md cursor-pointer font-bold text-gray-200 my-button mt-2 transition duration-200 px-10  md:px-20"
+        className="py-2 rounded-md cursor-pointer font-bold text-base-400 my-button mt-2 transition duration-200 px-10  md:px-20"
       >
         <p className="flex items-center gap-2 ">
           <IoArrowBackCircle /> Back To Home

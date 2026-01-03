@@ -90,18 +90,18 @@ const Report = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className=" w-9/10 md:w-8/10 mx-auto  py-8   min-h-screen">
+    <div className="  py-8   min-h-screen">
       <title>FinEase | Financial Report</title>
       <h1 className="text-3xl font-bold  mb-8  text-[#7c3aed] ">
         Financial Report
       </h1>
 
-      <div className="w-full mb-12 bg-[#0b1422] hover-glow shadow-lg rounded-2xl p-6 transition-all duration-300 ">
-        <h2 className="text-xl font-semibold text-center text-gray-200 mb-6">
+      <div className="w-full mb-12 bg-base-300 hover-glow shadow-lg rounded-2xl p-6 transition-all duration-300 ">
+        <h2 className="text-xl font-semibold text-center text-base-400 mb-6">
           Income vs Expense Overview
         </h2>
         {data.length === 0 ? (
-          <p className="text-center text-gray-300">No transactions found.</p>
+          <p className="text-center text-base-400">No transactions found.</p>
         ) : (
           <ResponsiveContainer width="100%" height={350}>
             <LineChart
@@ -145,10 +145,10 @@ const Report = () => {
         )}
       </div>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="flex-1 hover-glow bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 ">
+        <div className="flex-1 hover-glow bg-base-300 shadow-lg rounded-2xl p-6 transition-all duration-300 ">
           {expenseData.some((data) => data.value > 0) ? (
             <div>
-              <h2 className="text-xl font-semibold mb-4 text-center text-gray-200">
+              <h2 className="text-xl font-semibold mb-4 text-center text-base-400">
                 My Expenses
               </h2>
               <ResponsiveContainer width="100%" height={350}>
@@ -189,7 +189,7 @@ const Report = () => {
               </ResponsiveContainer>
             </div>
           ) : (
-            <h1 className="text-center  text-gray-200 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
+            <h1 className="text-center  text-base-400 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
               No Expense Found
               <img
                 className="w-70"
@@ -200,10 +200,10 @@ const Report = () => {
           )}
         </div>
 
-        <div className="flex-1  bg-[#0b1422] shadow-lg rounded-2xl p-6 transition-all duration-300 hover-glow">
+        <div className="flex-1  bg-base-300 shadow-lg rounded-2xl p-6 transition-all duration-300 hover-glow">
           {incomeData.some((data) => data.value > 0) ? (
             <div>
-              <h2 className="text-xl  font-semibold mb-4 text-center  text-gray-200">
+              <h2 className="text-xl  font-semibold mb-4 text-center  text-base-400">
                 My Income
               </h2>
               <ResponsiveContainer width="100%" height={330}>
@@ -244,7 +244,7 @@ const Report = () => {
               </ResponsiveContainer>
             </div>
           ) : (
-            <h1 className="text-center  text-gray-200 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
+            <h1 className="text-center  text-base-400 text-xl font-semibold  flex flex-col gap-10 justify-center items-center">
               No Income Found
               <img
                 className="w-70"

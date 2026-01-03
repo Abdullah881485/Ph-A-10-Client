@@ -53,9 +53,9 @@ const Login = () => {
       });
   };
   return (
-    <div className="w-[90%] md:w-4/5 lg:w-3/5 xl:3/6 mx-auto text-gray-200">
+    <div className="w-[90%] md:w-4/5 lg:w-3/5 xl:3/6 mx-auto text-base-400">
       <title>FinEase | Login</title>
-      <div className="rounded-2xl shadow-lg bg-[#0b1422] my-20 flex flex-col md:flex-row items-stretch overflow-hidden">
+      <div className="rounded-2xl shadow-lg bg-base-300 my-20 flex flex-col md:flex-row items-stretch overflow-hidden">
         <div className="hidden md:block md:w-1/2">
           <img
             className="h-full w-full object-cover"
@@ -90,7 +90,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="my-button text-white rounded-md font-bold cursor-pointer py-1.5 px-7 mt-2 transition duration-300 w-full"
+              className="my-button text-base-content rounded-md font-bold cursor-pointer py-1.5 px-7 mt-2 transition duration-300 w-full"
             >
               Login
             </button>
@@ -98,7 +98,7 @@ const Login = () => {
 
           <button
             onClick={handleGoogleSignIn}
-            className="flex hover-glow cursor-pointer items-center justify-center border border-gray-600 rounded-lg py-2 mt-4 w-full gap-2 text-white hover:bg-gray-900 transition duration-300"
+            className="flex hover-glow cursor-pointer items-center justify-center border border-gray-600 rounded-lg py-2 mt-4 w-full gap-2 text-base-content hover:bg-gray-900 transition duration-300"
           >
             <FcGoogle />
             <p className="">Continue with Google</p>

@@ -22,11 +22,11 @@ const MyProfile = () => {
   return (
     <div>
       <title>FinEase | My Profile</title>
-      <div className=" w-[90%] md:w-[60%] lg:w-[50%] mx-auto my-20 bg-[#0b1422] p-8 md:p-10 rounded-2xl text-gray-200">
+      <div className=" my-20 bg-base-300 p-8 md:p-10 rounded-2xl text-base-400">
         <h1 className="mb-5 text-2xl font-bold text-[#7c3aed]">My Profile</h1>
         <div className="flex items-center gap-3 md:gap-5">
           <img
-            className=" w-12 md:w-18 rounded-full"
+            className=" w-12 h-12 md:w-18 md:h-18 object-cover rounded-full"
             src={`${
               user.photoURL
                 ? user.photoURL
@@ -36,12 +36,12 @@ const MyProfile = () => {
           />
           <div className="flex flex-col">
             <h1 className="text-lg font-bold">{user.displayName}</h1>
-            <p className="text-gray-300 text-[12px] sm:text-sm">{user.email}</p>
+            <p className="text-base-400 text-[12px] sm:text-sm">{user.email}</p>
           </div>
         </div>
         <form onSubmit={handleUpdate}>
           <div className="flex flex-col my-3">
-            <label className="label text-gray-200 font-semibold text-sm md:text-lg">
+            <label className="label text-base-400 font-semibold text-sm md:text-lg">
               {" "}
               Name
             </label>
@@ -49,21 +49,21 @@ const MyProfile = () => {
               name="name"
               type="text"
               defaultValue={user.displayName}
-              className="input w-full placeholder:text-sm md:placeholder:text-[15px] bg-[#0b1422]"
+              className="input w-full placeholder:text-sm md:placeholder:text-[15px] bg-base-300"
               placeholder="Enter Your Name"
             />
-            <label className="label text-sm md:text-lg mt-4 text-gray-200 font-semibold">
+            <label className="label text-sm md:text-lg mt-4 text-base-400 font-semibold">
               Photo URL
             </label>
             <input
               name="photo"
               type="text"
-              className="input w-full bg-[#0b1422]"
+              className="input w-full bg-base-300"
             />
 
             <button
               type="submit"
-              className=" w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 my-button mt-5 text-xs md:text-sm text-white rounded-md font-bold cursor-pointer py-2.5 px-2 md:px-7 transition-all duration-200 "
+              className=" w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 my-button mt-5 text-xs md:text-sm text-base-content rounded-md font-bold cursor-pointer py-2.5 px-2 md:px-7 transition-all duration-200 "
             >
               Update Profile
             </button>

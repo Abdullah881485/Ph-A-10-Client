@@ -26,7 +26,6 @@ FinEase is a comprehensive personal finance management web application that empo
 - **Firebase 12.5** - Authentication service
 - **SweetAlert2 11.26** - Beautiful modal alerts
 
-
 ## 🔒 Security Features
 
 - Firebase Authentication with email/password and OAuth
@@ -35,5 +34,5 @@ FinEase is a comprehensive personal finance management web application that empo
 - Read-only user fields in forms
 - Environment variables for sensitive data
 
-
 **GitHub Repository:** [Abdullah881485/Ph-A-10-Client](https://github.com/Abdullah881485/Ph-A-10-Client)
+

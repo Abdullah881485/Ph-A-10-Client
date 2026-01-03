@@ -74,7 +74,7 @@ const AddTransaction = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="w-[95%] md:w-5/10 mx-auto p-6  rounded-2xl shadow bg-[#0b1422] my-10 text-gray-200">
+    <div className="w-[95%] md:w-5/10 mx-auto p-6  rounded-2xl shadow bg-base-300 my-10 text-base-400">
       <title>FinEase | Add Transaction</title>
       <h1 className="text-2xl font-bold mb-4 text-[#7c3aed]">
         Add Transaction
@@ -89,7 +89,7 @@ const AddTransaction = () => {
               id="type"
               defaultValue="Pick a type"
               onChange={handleType}
-              className="select input border p-2 rounded  bg-[#0b1422] text-white"
+              className="select input border p-2 rounded  bg-base-300 text-base-content"
             >
               <option disabled={true}>Pick a type</option>
               <option>Income</option>
@@ -104,7 +104,7 @@ const AddTransaction = () => {
               required
               defaultValue="Pick a category"
               id="category"
-              className="input select border p-2 rounded bg-[#0b1422] text-white"
+              className="input select border p-2 rounded bg-base-300 text-base-content"
             >
               <option disabled={true}>Pick a category</option>
               {type === "Expense"
@@ -124,7 +124,7 @@ const AddTransaction = () => {
               name="amount"
               id="amount"
               type="number"
-              className="input border p-2 rounded  bg-[#0b1422] text-white"
+              className="input border p-2 rounded  bg-base-300 text-base-content"
               required
               min="1"
               max="1000000000000000000000000000"
@@ -136,7 +136,7 @@ const AddTransaction = () => {
               name="date"
               type="date"
               id="date"
-              className="input border p-2 rounded  bg-[#0b1422] dark:text-white"
+              className="input border p-2 rounded  bg-base-300 dark:text-base-content"
               required
               min="2025-01-01"
               max="2026-12-31"
@@ -150,7 +150,7 @@ const AddTransaction = () => {
           <textarea
             name="description"
             id="description"
-            className="textarea border p-2 rounded w-full bg-[#0b1422] text-white"
+            className="textarea border p-2 rounded w-full bg-base-300 text-base-content"
             required
           />
         </div>
@@ -162,7 +162,7 @@ const AddTransaction = () => {
             name="email"
             readOnly
             type="email"
-            className="input w-full bg-[#0b1422] text-white"
+            className="input w-full bg-base-300 text-base-content"
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -172,7 +172,7 @@ const AddTransaction = () => {
             name="name"
             readOnly
             type="text"
-            className="input w-full bg-[#0b1422] text-white"
+            className="input w-full bg-base-300 text-base-content"
           />
         </div>
 
@@ -185,7 +185,7 @@ const AddTransaction = () => {
           </button>
           <button
             type="submit"
-            className="my-button text-xs md:text-sm text-white rounded-md font-bold cursor-pointer py-2.5 md:py-1.5 px-1 md:px-7 transition-all duration-200 w-full sm:w-auto"
+            className="my-button text-xs md:text-sm text-base-content rounded-md font-bold cursor-pointer py-2.5 md:py-1.5 px-1 md:px-7 transition-all duration-200 w-full sm:w-auto"
           >
             Add Transaction
           </button>

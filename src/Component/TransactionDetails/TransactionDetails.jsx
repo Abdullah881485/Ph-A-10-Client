@@ -20,14 +20,14 @@ const TransactionDetails = () => {
   //   console.log(transaction);
 
   return (
-    <div className=" flex items-center justify-center bg-base-200 py-30 text-gray-200">
+    <div className=" flex items-center justify-center py-30 text-base-400">
       <title>FinEase | Transaction Details</title>
-      <div className=" bg-[#0b1422] shadow-2xl rounded-2xl p-8 w-9/10 md:w-6/10 lg:w-5/10 transition-all duration-300">
+      <div className=" bg-base-300 shadow-2xl w-9/10 md:w-8/10 lg:w-7/10 rounded-2xl p-8 transition-all duration-300">
         <h1 className="text-3xl text-[#7c3aed] font-extrabold text-center mb-6 title-font">
           Transaction Details
         </h1>
 
-        <div className="space-y-4  dark:text-gray-200">
+        <div className="space-y-4  dark:text-base-400">
           <div className="flex justify-between border-b border-gray-300  pb-2">
             <span className="font-semibold">Type:</span>
             <span className="text-indigo-500 font-medium">
@@ -62,7 +62,7 @@ const TransactionDetails = () => {
         <div>
           <Link
             className=" my-button mt-3 text-sm text-white rounded-md font-bold cursor-pointer py-2.5 md:py-1.5 px-5 md:px-7 transition-all duration-200 "
-            to="/myTransaction"
+            to="/dashboard-layout/myTransaction"
           >
             <p className="flex items-center gap-2 ">
               <IoArrowBackCircle /> Back

@@ -2,7 +2,7 @@ import React from "react";
 
 const Terms = () => {
   return (
-    <div className="max-w-4xl mx-auto p-6  dark:text-gray-200 leading-relaxed">
+    <div className="max-w-4xl mx-auto p-6  dark:text-base-400 leading-relaxed">
       <title>FinEase | Terms & Conditions</title>
       <h1 className="text-3xl font-semibold text-purple-600 mb-4">
         Terms & Conditions

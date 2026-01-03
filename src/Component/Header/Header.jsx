@@ -28,17 +28,22 @@ const Header = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li className="hover:text-[#7c3aed]">
-        <NavLink to="/addTransaction">Add Transaction</NavLink>
+        <NavLink to="/about">About Us</NavLink>
       </li>
       <li className="hover:text-[#7c3aed]">
-        <NavLink to="/myTransaction">My Transaction</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </li>
-      <li className="hover:text-[#7c3aed]">
-        <NavLink to="/reports">Reports</NavLink>
-      </li>
-      <li className="hover:text-[#7c3aed]">
-        <NavLink to="/myProfile">My Profile</NavLink>
-      </li>
+
+      {user && (
+        <div className="flex flex-col lg:flex-row items-start lg:items-center  lg:gap-5">
+          <li className="hover:text-[#7c3aed]">
+            <NavLink to="/addTransaction">Add Transaction</NavLink>
+          </li>
+          <li className="hover:text-[#7c3aed]">
+            <NavLink to="/dashboard-layout">Dashboard</NavLink>
+          </li>
+        </div>
+      )}
     </>
   );
 
@@ -72,8 +77,8 @@ const Header = () => {
   };
 
   return (
-    <div className=" shadow-bottom">
-      <div className="navbar w-full md:w-9/10 mx-auto">
+    <div className=" sticky top-0 z-50 bg-base-100 shadow-bottom">
+      <div className="navbar w-full md:w-8/10 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -109,7 +114,7 @@ const Header = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="space-x-4 text-[14px] menu-horizontal px-1 gap-1.5 font-bold dark:text-gray-200">
+          <ul className="space-x-4 text-[14px] menu-horizontal px-1 gap-1.5 font-bold dark:text-base-400">
             {links}
           </ul>
         </div>
@@ -170,7 +175,7 @@ const Header = () => {
                     className="m-1 cursor-pointer"
                   >
                     <img
-                      className=" w-10 rounded-full"
+                      className=" md:w-10 w-8 md:h-10 h-8 object-cover rounded-full"
                       src={
                         user?.photoURL ||
                         "https://i.ibb.co/HT6sMcVr/2015-10-06-FB-person.webp"
@@ -180,24 +185,24 @@ const Header = () => {
                   </div>
                   <div
                     tabIndex={0}
-                    className="dropdown-content card card-sm bg-[#0b1422] z-1 shadow-md  p-2 w-70"
+                    className="dropdown-content card card-sm bg-base-300 z-1 shadow-md  p-2 w-70"
                   >
-                    <div className="card-body  text-gray-200 ">
+                    <div className="card-body  text-base-400 ">
                       <h1 className="text-[15px] font-bold">
                         {user.displayName ? user.displayName : "Anonymous"}
                       </h1>
                       <p className="text-xs font-semibold">{user.email}</p>
                       <div className="pt-2  border-t-2 border-gray-800">
                         <Link
-                          to="/myProfile"
-                          className=" text-white rounded-md font-bold cursor-pointer py-1.5 hover-glow btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 hover:text-gray-200 w-full mt-2 "
+                          to="/dashboard-layout/myProfile"
+                          className=" text-base-content rounded-md font-bold cursor-pointer py-1.5 hover-glow btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 hover:text-base-400 w-full mt-2 "
                         >
                           <RiAccountCircle2Fill size={20} />
                           Profile
                         </Link>
                         <button
                           onClick={handleSignOut}
-                          className="my-button text-white rounded-md font-bold cursor-pointer py-1.5 px-7 btn-sm  w-full text-center mt-2 "
+                          className="my-button text-base-content rounded-md font-bold cursor-pointer py-1.5 px-7 btn-sm  w-full text-center mt-2 "
                         >
                           Log Out
                         </button>
@@ -210,13 +215,13 @@ const Header = () => {
               <div className="flex items-center gap-2 md:gap-5">
                 <Link
                   to="/login"
-                  className="text-white text-xs md:text-sm rounded-md font-bold cursor-pointer py-1.5 px-1.5 md:px-7 border hover-glow border-gray-500  "
+                  className="text-base-content text-xs md:text-sm rounded-md font-bold cursor-pointer py-1.5 px-1.5 md:px-7 border hover-glow border-gray-500  "
                 >
                   <p className="text-[#7c3aed]">Login</p>
                 </Link>
                 <Link
                   to="/register"
-                  className="my-button text-xs md:text-sm text-white rounded-md font-semibold cursor-pointer py-1.5 px-1 md:px-7 "
+                  className="my-button text-xs md:text-sm text-base-content rounded-md font-semibold cursor-pointer py-1.5 px-1 md:px-7 "
                 >
                   Sign Up
                 </Link>
