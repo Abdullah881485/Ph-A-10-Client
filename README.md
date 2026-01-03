@@ -34,5 +34,30 @@ FinEase is a comprehensive personal finance management web application that empo
 - Read-only user fields in forms
 - Environment variables for sensitive data
 
+<<<<<<< HEAD
 **GitHub Repository:** [Abdullah881485/Ph-A-10-Client](https://github.com/Abdullah881485/Ph-A-10-Client)
+=======
+
+## 🚀 Installation & Setup (Local)
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/Abdullah881485/Ph-A-10-Client.git
+ 2.  ```bash
+     cd Ph-A-10-Client
+ 3.  ```bash
+      npm install
+ 4.  ```bash
+       VITE_FIREBASE_API_KEY=your_api_key
+      VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+      VITE_FIREBASE_PROJECT_ID=your_project_id
+      VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+      VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+      VITE_FIREBASE_APP_ID=your_app_id
+5.  ```bash
+     npm run dev
+6. ```bash
+     http://localhost:5173
+   
+>>>>>>> ea57e76c9a3a0c27360e021eea83985a1e0a122a
 
