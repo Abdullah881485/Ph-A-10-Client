@@ -55,6 +55,8 @@ const AddTransaction = () => {
         if (data.data) {
           Swal.fire({
             title: "",
+            background: "#0b1422",
+            color: "white",
             text: "Your Transaction added successfully",
             icon: "success",
             confirmButtonText: "Close",

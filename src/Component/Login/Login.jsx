@@ -1,23 +1,31 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
+  const DEMO_USER = {
+    email: "asdf@asdf8.com",
+    password: "Asdf123",
+  };
   const { signInUser, signInWithGoogle, setUser } = use(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const handleSignIn = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    // const email = e.target.email.value;
+    // const password = e.target.password.value;
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
         // console.log(result.user);
         Swal.fire({
           title: "",
+          background: "#0b1422",
+          color: "white",
           text: "You logged in Successfully",
           icon: "success",
           confirmButtonText: "Close",
@@ -29,6 +37,8 @@ const Login = () => {
         console.log(error);
         Swal.fire({
           title: "Warning",
+          background: "#0b1422",
+          color: "white",
           text: "Account Not Found, Please Register",
           icon: "error",
           confirmButtonText: "Close",
@@ -41,6 +51,8 @@ const Login = () => {
         const _user = result.user;
         Swal.fire({
           title: "",
+          background: "#0b1422",
+          color: "white",
           text: "You logged in Successfully",
           icon: "success",
           confirmButtonText: "Close",
@@ -68,6 +80,25 @@ const Login = () => {
           <h1 className="text-2xl font-bold mb-6 text-center text-[#7c3aed]">
             Login to FinEase
           </h1>
+          <button
+            type="button"
+            onClick={() => {
+              setEmail(DEMO_USER.email);
+              setPassword(DEMO_USER.password);
+            }}
+            className="
+    w-full mb-6
+    flex items-center justify-center gap-2
+    border border-dashed border-[#7c3aed]
+    text-[#7c3aed] font-semibold text-sm
+    py-2.5 rounded-lg
+    hover-glow
+    cursor-pointer
+    transition
+  "
+          >
+            🚀 Try Demo Account
+          </button>
           <form onSubmit={handleSignIn}>
             <div className="flex flex-col gap-2 mb-4">
               <label htmlFor="user">Email</label>
@@ -75,6 +106,8 @@ const Login = () => {
                 required
                 name="email"
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]  "
               />
             </div>
@@ -84,6 +117,8 @@ const Login = () => {
                 required
                 name="password"
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="input w-full text-lg rounded-none bg-transparent border-transparent border-b border-b-[#7c3aed] focus:outline-none focus:ring-0 focus:border-b-2 focus:border-b-[#7c3aed]"
               />
             </div>

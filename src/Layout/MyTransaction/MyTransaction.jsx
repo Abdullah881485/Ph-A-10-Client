@@ -76,16 +76,24 @@ const MyTransaction = () => {
       <title>FinEase | My Transaction</title>
 
       {myTransaction.length === 0 ? (
-        <div className="flex flex-col items-center">
-          <p className="mb-3 font-semibold">
+        <div className="flex flex-col justify-center items-center">
+          {" "}
+          <img
+            className="w-90"
+            src="https://i.ibb.co.com/jZ3BQr9x/businessman-sad-for-no-data-in-folder-illustration-download-svg-png-gif-file-formats-empty-business.png"
+            alt=""
+          />{" "}
+          <p className="w-70 mb-3 text-center font-semibold text-[17px]">
+            {" "}
             You don't have any transactions yet.
-          </p>
+          </p>{" "}
           <Link
             to="/addTransaction"
-            className="my-button text-base-content rounded-md font-bold px-7 py-1.5"
+            className="my-button text-base-content rounded-md font-bold cursor-pointer py-1.5 px-7"
           >
-            Add Transaction
-          </Link>
+            {" "}
+            Add Transaction{" "}
+          </Link>{" "}
         </div>
       ) : (
         <>

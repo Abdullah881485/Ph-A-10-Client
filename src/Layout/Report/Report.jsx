@@ -92,9 +92,7 @@ const Report = () => {
   return (
     <div className="  py-8   min-h-screen">
       <title>FinEase | Financial Report</title>
-      <h1 className="text-3xl font-bold  mb-8  text-[#7c3aed] ">
-        Financial Report
-      </h1>
+      {/* <h1 className="text-2xl font-bold  mb-8  text-[#7c3aed] ">Dashboard</h1> */}
 
       <div className="w-full mb-12 bg-base-300 hover-glow shadow-lg rounded-2xl p-6 transition-all duration-300 ">
         <h2 className="text-xl font-semibold text-center text-base-400 mb-6">

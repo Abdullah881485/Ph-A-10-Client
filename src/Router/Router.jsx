@@ -82,7 +82,7 @@ const Router = createBrowserRouter([
       {
         path: "/dashboard-layout",
         index: true,
-        element: <MyTransaction></MyTransaction>,
+        element: <Report></Report>,
       },
       {
         path: "myTransaction",

@@ -47,6 +47,8 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
         // console.log(data.data);
         Swal.fire({
           title: "",
+          background: "#0b1422",
+          color: "white",
           text: "Your transaction updated Successfully",
           icon: "success",
           confirmButtonText: "Close",
@@ -64,6 +66,8 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
+      background: "#0b1422",
+      color: "white",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -75,6 +79,8 @@ const Transaction = ({ card, setMyTransaction, myTransaction }) => {
           if (data.data.deletedCount) {
             Swal.fire({
               title: "Deleted!",
+              background: "#0b1422",
+              color: "white",
               text: "Your transaction has been deleted.",
               icon: "success",
             });

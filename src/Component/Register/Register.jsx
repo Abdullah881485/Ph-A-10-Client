@@ -17,6 +17,8 @@ const Register = () => {
     if (password.length < 6) {
       Swal.fire({
         title: "Error!",
+        background: "#0b1422",
+        color: "white",
         text: "Password need to be atleast 6 digit or longer",
         icon: "error",
         confirmButtonText: "Close",
@@ -25,6 +27,8 @@ const Register = () => {
     } else if (!/[A-Z]/.test(password)) {
       Swal.fire({
         title: "Error!",
+        background: "#0b1422",
+        color: "white",
         text: "Must have an Uppercase letter in the password",
         icon: "error",
         confirmButtonText: "Close",
@@ -33,6 +37,8 @@ const Register = () => {
     } else if (!/[a-z]/.test(password)) {
       Swal.fire({
         title: "Error!",
+        background: "#0b1422",
+        color: "white",
         text: "Must have an lowercase letter in the password",
         icon: "error",
         confirmButtonText: "Close",
@@ -57,6 +63,8 @@ const Register = () => {
           });
         Swal.fire({
           title: "",
+          background: "#0b1422",
+          color: "white",
           text: "Account Created Successfully",
           icon: "success",
           confirmButtonText: "Close",
@@ -68,6 +76,8 @@ const Register = () => {
         console.log(err);
         Swal.fire({
           title: "Error!",
+          background: "#0b1422",
+          color: "white",
           text: "You Already Have an Account",
           icon: "error",
           confirmButtonText: "Close",
@@ -83,6 +93,8 @@ const Register = () => {
       .then((result) => {
         Swal.fire({
           title: "",
+          background: "#0b1422",
+          color: "white",
           text: "Account Created Successfully",
           icon: "success",
           confirmButtonText: "Close",

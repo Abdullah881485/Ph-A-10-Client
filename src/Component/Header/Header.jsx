@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 import Swal from "sweetalert2";
 import { RiAccountCircle2Fill } from "react-icons/ri";
+import "./Header.css";
 
 const Header = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -27,13 +28,6 @@ const Header = () => {
       <li className="hover:text-[#7c3aed]">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="hover:text-[#7c3aed]">
-        <NavLink to="/about">About Us</NavLink>
-      </li>
-      <li className="hover:text-[#7c3aed]">
-        <NavLink to="/contact">Contact</NavLink>
-      </li>
-
       {user && (
         <div className="flex flex-col lg:flex-row items-start lg:items-center  lg:gap-5">
           <li className="hover:text-[#7c3aed]">
@@ -44,12 +38,20 @@ const Header = () => {
           </li>
         </div>
       )}
+      <li className="hover:text-[#7c3aed]">
+        <NavLink to="/about">About Us</NavLink>
+      </li>
+      <li className="hover:text-[#7c3aed]">
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
     </>
   );
 
   const handleSignOut = () => {
     Swal.fire({
       title: "Are you sure?",
+      background: "#0b1422",
+      color: "white",
       text: "You'll be logged out of your account.",
       icon: "warning",
       showCancelButton: true,
@@ -62,6 +64,8 @@ const Header = () => {
           .then(() => {
             Swal.fire({
               title: "Logged out!",
+              background: "#0b1422",
+              color: "white",
               text: "You have successfully logged out.",
               icon: "success",
               timer: 1500,

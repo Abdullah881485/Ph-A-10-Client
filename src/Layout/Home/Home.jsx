@@ -107,8 +107,7 @@ const Home = () => {
                 }`}
               >
                 <Counter value={balance ? balance : 0} prefix={"$"}></Counter>
-                {/* ${" "}
-                {balance ? balance : 0} */}
+                
               </p>
             </div>
             <p

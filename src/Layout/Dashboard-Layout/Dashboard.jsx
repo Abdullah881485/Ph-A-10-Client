@@ -3,9 +3,11 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router";
 import { GrTransaction } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { IoHomeOutline, IoStatsChartSharp } from "react-icons/io5";
+import { LuLayoutDashboard } from "react-icons/lu";
 import { FaHome } from "react-icons/fa";
 import Footer from "../../Component/Footer/Footer";
 import { AuthContext } from "../../Provider/AuthContext";
+import "./Dashboard.css";
 import Swal from "sweetalert2";
 import { RiAccountCircle2Fill } from "react-icons/ri";
 
@@ -17,6 +19,8 @@ const Dashboard = () => {
   const handleSignOut = () => {
     Swal.fire({
       title: "Are you sure?",
+      background: "#0b1422",
+      color: "white",
       text: "You'll be logged out of your account.",
       icon: "warning",
       showCancelButton: true,
@@ -29,6 +33,8 @@ const Dashboard = () => {
           .then(() => {
             Swal.fire({
               title: "Logged out!",
+              background: "#0b1422",
+              color: "white",
               text: "You have successfully logged out.",
               icon: "success",
               timer: 1500,
@@ -53,11 +59,11 @@ const Dashboard = () => {
   //     </>
   //   );
   return (
-    <div className="w-[95%] md:w-8/10 mx-auto">
+    <div className="w-[95%] md:w-9/10 mx-auto py-5">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-          <nav className="navbar w-full flex justify-between items-center">
+          <nav className="navbar w-full flex justify-between items-center px-0 lg:px-18 ">
             <div className="flex items-center gap-0 md:gap-5">
               <label
                 htmlFor="my-drawer-4"
@@ -79,9 +85,12 @@ const Dashboard = () => {
                   <path d="M14 10l2 2l-2 2"></path>
                 </svg>
               </label>
-              <div className="px-2 md:px-4 logo-font text-xl md:text-2xl text-[#7c3aed]">
+              <Link
+                to="/"
+                className="px-2 md:px-4 logo-font text-xl md:text-3xl text-[#7c3aed]"
+              >
                 FinEase
-              </div>
+              </Link>
             </div>
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="m-1 cursor-pointer">
@@ -104,6 +113,13 @@ const Dashboard = () => {
                   </h1>
                   <p className="text-xs font-semibold">{user.email}</p>
                   <div className="pt-2  border-t-2 border-gray-800">
+                    <Link
+                      to="/dashboard-layout/reports"
+                      className=" text-base-content rounded-md font-bold cursor-pointer py-1.5 hover-glow btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 hover:text-base-400 w-full mt-2 "
+                    >
+                      <LuLayoutDashboard size={18} />
+                      Dashboard Home
+                    </Link>
                     <Link
                       to="/dashboard-layout/myProfile"
                       className=" text-base-content rounded-md font-bold cursor-pointer py-1.5 hover-glow btn-sm btn-ghost text-[14px] btn justify-start hover:bg-gray-800 hover:text-base-400 w-full mt-2 "
@@ -148,6 +164,19 @@ const Dashboard = () => {
                   </button>
                 </NavLink>
               </li>
+              <li className="hover:text-[#7c3aed]">
+                <NavLink to="/dashboard-layout/reports">
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-3 cursor-pointer"
+                    data-tip="Dashboard Home"
+                  >
+                    <LuLayoutDashboard size={18} />
+                    <span className="is-drawer-close:hidden">
+                      Dashboard Home
+                    </span>
+                  </button>
+                </NavLink>
+              </li>
 
               <li className="hover:text-[#7c3aed]">
                 <NavLink to="/dashboard-layout/myTransaction">
@@ -159,17 +188,6 @@ const Dashboard = () => {
                     <span className="is-drawer-close:hidden">
                       My Transaction
                     </span>
-                  </button>
-                </NavLink>
-              </li>
-              <li className="hover:text-[#7c3aed]">
-                <NavLink to="/dashboard-layout/reports">
-                  <button
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-3 cursor-pointer"
-                    data-tip="Reports"
-                  >
-                    <IoStatsChartSharp size={18} />
-                    <span className="is-drawer-close:hidden">Reports</span>
                   </button>
                 </NavLink>
               </li>
